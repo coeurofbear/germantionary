@@ -1,18 +1,26 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-lg-5">
+        <SearchResults />
+      </div>
+      <div class="col-12 col-lg-6 offset-lg-1">
+        <AddNewWord />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import SearchResults from "@/components/searchresults/SearchResults.vue";
+import AddNewWord from "@/components/addnewword/AddNewWord.vue";
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
 
 export default {
   name: "Home",
   components: {
-    HelloWorld
+    SearchResults,
+    AddNewWord
   }
 };
 </script>
