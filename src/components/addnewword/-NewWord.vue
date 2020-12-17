@@ -1,8 +1,8 @@
 <template>
   <div>
-    <input type="text" class="word" />
-    <input type="text" class="meaning" />
-    <select name="type" id="type">
+    <input type="text" class="word-input" />
+    <input type="text" />
+    <select name="type" id="type" class="select-input">
       <option value="noun">Noun</option>
       <option value="verb">Verb</option>
     </select>
