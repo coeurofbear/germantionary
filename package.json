@@ -28,8 +28,13 @@
     "eslint-plugin-vue": "^6.2.2",
     "meyer-reset-sass": "^1.0.1",
     "prettier": "^1.19.1",
+    "prettier-eslint": "^12.0.0",
+    "prettier-eslint-cli": "^5.0.0",
+    "prettier-stylelint": "^0.4.2",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
+    "stylelint": "^13.8.0",
+    "stylelint-config-standard": "^20.0.0",
     "vue-template-compiler": "^2.6.11"
   }
 }

@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import List from "./../general/List.vue";
+import List from './../general/List.vue';
 
 export default {
-  name: "LatestAdded",
+  name: 'LatestAdded',
   components: {
     List
   },
@@ -19,26 +19,26 @@ export default {
     return {
       words: [
         {
-          word: "Brauchen",
-          meaning: "To need",
-          type: "Verb"
+          word: 'Brauchen',
+          meaning: 'To need',
+          type: 'Verb'
         },
         {
-          word: "Das Hause",
-          meaning: "House",
-          gender: "Neutral",
-          type: "Noun"
+          word: 'Das Hause',
+          meaning: 'House',
+          gender: 'Neutral',
+          type: 'Noun'
         },
         {
-          word: "Schön",
-          meaning: "Beautiful",
-          type: "Adjetive"
+          word: 'Schön',
+          meaning: 'Beautiful',
+          type: 'Adjetive'
         },
         {
-          word: "Der Hund",
-          meaning: "Dog",
-          type: "Noun",
-          gender: "Masculine"
+          word: 'Der Hund',
+          meaning: 'Dog',
+          type: 'Noun',
+          gender: 'Masculine'
         }
       ]
     };

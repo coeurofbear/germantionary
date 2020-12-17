@@ -19,11 +19,11 @@
 
 <script>
 export default {
-  name: "AddNewWord",
+  name: 'AddNewWord',
 
   data() {
     return {
-      searchedWord: "Brauchen"
+      searchedWord: 'Brauchen'
     };
   }
 };

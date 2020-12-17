@@ -13,12 +13,12 @@
 </template>
 
 <script>
-import AddNewWord from "@/components/addnewword/AddNewWord.vue";
-import LatestAdded from "@/components/latestadded/LatestAdded.vue";
+import AddNewWord from '@/components/addnewword/AddNewWord.vue';
+import LatestAdded from '@/components/latestadded/LatestAdded.vue';
 // @ is an alias to /src
 
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
     AddNewWord,
     LatestAdded

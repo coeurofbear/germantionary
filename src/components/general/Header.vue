@@ -8,12 +8,12 @@
 
 <script>
 export default {
-  name: "Header"
+  name: 'Header'
 };
 </script>
 
 <style scoped lang="scss">
-@import "./src/assets/scss/variables";
+@import './src/assets/scss/variables';
 
 .header {
   background: $black;

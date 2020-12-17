@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import NewWord from "./-NewWord.vue";
+import NewWord from './-NewWord.vue';
 
 export default {
-  name: "AddNewWord",
+  name: 'AddNewWord',
 
   components: {
     NewWord

@@ -14,32 +14,32 @@
 </template>
 
 <script>
-import List from "./../general/List.vue";
+import List from './../general/List.vue';
 
 export default {
-  name: "SearchResults",
+  name: 'SearchResults',
   components: {
     List
   },
   data() {
     return {
-      searchedWord: "Brauchen",
+      searchedWord: 'Brauchen',
       words: [
         {
-          word: "Brauchen",
-          meaning: "To need",
-          type: "Verb"
+          word: 'Brauchen',
+          meaning: 'To need',
+          type: 'Verb'
         },
         {
-          word: "Das Hause",
-          meaning: "House",
-          gender: "Neutral",
-          type: "Noun"
+          word: 'Das Hause',
+          meaning: 'House',
+          gender: 'Neutral',
+          type: 'Noun'
         },
         {
-          word: "Schön",
-          meaning: "Beautiful",
-          type: "Adjetive"
+          word: 'Schön',
+          meaning: 'Beautiful',
+          type: 'Adjetive'
         }
       ]
     };

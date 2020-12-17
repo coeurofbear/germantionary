@@ -1,52 +1,52 @@
 .line {
-    height: 40px;
-    width: 1px;
-    background: $black;
-    margin: 0 15px;
-    }
-    .tag {
-    padding: 3px 12px;
-    font-size: 12px;
-    letter-spacing: 1px;
-    color: black;
-    text-transform: uppercase;
-    font-weight: bold;
-    border-radius: 5px;
-    margin-left: 7px;
-    cursor: pointer;
-    
-    &.green {
-        background: $green;
-    }
-    &.blue {
-        background: $blue;
-    }
-    &.clear {
-        padding: 3px 5px;
-        border: 1px $black solid;
-    }
-    &.red {
-        background: $red;
-    }
-    }
-    
-    .circle-icon {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 40px;
-        height: 40px;
-        padding: 10px;
-        border-radius: 50%;
-        cursor: pointer;
-    
-        img {
-            width: 22px;
-        }
-        &.green {
-            background: $green;
-        }
-        &.yellow {
-            background: $yellow;
-        }
-      }
+  height: 40px;
+  width: 1px;
+  background: $black;
+  margin: 0 15px;
+}
+.tag {
+  padding: 3px 12px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: black;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-left: 7px;
+  cursor: pointer;
+
+  &.green {
+    background: $green;
+  }
+  &.blue {
+    background: $blue;
+  }
+  &.clear {
+    padding: 3px 5px;
+    border: 1px $black solid;
+  }
+  &.red {
+    background: $red;
+  }
+}
+
+.circle-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+
+  img {
+    width: 22px;
+  }
+  &.green {
+    background: $green;
+  }
+  &.yellow {
+    background: $yellow;
+  }
+}
