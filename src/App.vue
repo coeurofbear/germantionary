@@ -1,32 +1,63 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <Header title="Germantionary" />
+    <SearchResults />
+    <!-- <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
-    </div>
+    </div> -->
     <router-view />
   </div>
 </template>
 
+<script>
+// @ is an alias to /src
+import Header from "@/components/Header.vue";
+import SearchResults from "@/components/searchbar/SearchBar.vue";
+
+export default {
+  name: "App",
+  components: {
+    Header,
+    SearchResults
+  }
+};
+</script>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@import "~meyer-reset-sass/reset";
+@import "./src/assets/scss/main";
+
+@mixin font-face($name, $file, $weight: normal, $style: normal) {
+  @font-face {
+    font-family: $name;
+    font-style: $style;
+    font-weight: $weight;
+    font-display: swap;
+    src: url("#{$file}.eot") format("eot"), url("#{$file}.woff") format("woff"),
+      url("#{$file}.ttf") format("truetype");
+  }
 }
 
-#nav {
-  padding: 30px;
+@include font-face(
+  "Neuzeit Grotesk",
+  "./assets/fonts/neuzeit_grotesk_regular-webfont"
+);
+@include font-face(
+  "Neuzeit Grotesk",
+  "./assets/fonts/neuzeit_grotesk_bold-webfont",
+  bold
+);
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+@mixin font-family-neuzeit-grotesk {
+  font-family: Neuzeit Grotesk, Arial, Verdana, Tahoma, sans-serif;
+}
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+@mixin font-family-default {
+  @include font-family-neuzeit-grotesk;
+}
+
+body {
+  @include font-family-default;
 }
 </style>
