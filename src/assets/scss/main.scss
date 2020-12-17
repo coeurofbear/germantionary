@@ -46,8 +46,22 @@ border-radius: 5px;
 }
 }
 
-.edit {
-    background: $yellow;
+.circle-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
     padding: 10px;
     border-radius: 50%;
+
+    img {
+        width: 22px;
+    }
+    &.green {
+        background: $green;
+    }
+    &.yellow {
+        background: $yellow;
+    }
   }

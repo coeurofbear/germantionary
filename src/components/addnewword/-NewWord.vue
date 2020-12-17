@@ -11,6 +11,9 @@
       <option value="masculine">Masculine</option>
       <option value="feminine">Feminine</option>
     </select>
+    <div class="circle-icon green">
+      <img src="@/assets/img/plus.svg" alt="" />
+    </div>
   </div>
 </template>
 

@@ -1,9 +1,7 @@
 <template>
   <div class="search">
-    <div class="container">
-      <h3>Search</h3>
-      <input class="search-bar" type="text" />
-    </div>
+    <h3>Search</h3>
+    <input class="search-bar" type="text" />
   </div>
 </template>
 
@@ -15,11 +13,8 @@ export default {
 
 <style scoped lang="scss">
 @import "./src/assets/scss/variables";
-
 .search {
-  background: #f6f6f6;
-  padding: 3rem 0;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
 
 .search-bar {

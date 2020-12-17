@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header title="Germantionary" />
-    <SearchResults />
+    <Search />
     <!-- <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
@@ -12,14 +12,14 @@
 
 <script>
 // @ is an alias to /src
-import Header from "@/components/Header.vue";
-import SearchResults from "@/components/searchbar/SearchBar.vue";
+import Header from "@/components/general/Header.vue";
+import Search from "@/components/search/Search.vue";
 
 export default {
   name: "App",
   components: {
     Header,
-    SearchResults
+    Search
   }
 };
 </script>
