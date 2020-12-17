@@ -20,16 +20,25 @@ export default {
       words: [
         {
           word: "Brauchen",
-          meaning: "To need"
+          meaning: "To need",
+          type: "Verb"
         },
         {
           word: "Das Hause",
           meaning: "House",
-          gender: "Neutral"
+          gender: "Neutral",
+          type: "Noun"
         },
         {
           word: "Schön",
-          meaning: "Beautiful"
+          meaning: "Beautiful",
+          type: "Adjetive"
+        },
+        {
+          word: "Der Hund",
+          meaning: "Dog",
+          type: "Noun",
+          gender: "Masculine"
         }
       ]
     };

@@ -1,7 +1,10 @@
 <template>
   <div class="search">
     <h3>Search</h3>
-    <input class="search-bar" type="text" />
+    <div class="search-wrapper">
+      <input class="search-bar" type="text" />
+      <img src="@/assets/img/search.svg" alt="" />
+    </div>
   </div>
 </template>
 
@@ -16,7 +19,16 @@ export default {
 .search {
   margin-bottom: 40px;
 }
-
+.search-wrapper {
+  position: relative;
+  img {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+}
 .search-bar {
   width: 100%;
   height: 45px;

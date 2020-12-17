@@ -2,7 +2,13 @@
   <div>
     <h3>Search results for '{{ searchedWord }}'</h3>
     <ul class="list">
-      <List search v-for="(word, index) in words" :word="word" :key="index" />
+      <List
+        date
+        search
+        v-for="(word, index) in words"
+        :word="word"
+        :key="index"
+      />
     </ul>
   </div>
 </template>
@@ -21,16 +27,19 @@ export default {
       words: [
         {
           word: "Brauchen",
-          meaning: "To need"
+          meaning: "To need",
+          type: "Verb"
         },
         {
           word: "Das Hause",
           meaning: "House",
-          gender: "Neutral"
+          gender: "Neutral",
+          type: "Noun"
         },
         {
           word: "Schön",
-          meaning: "Beautiful"
+          meaning: "Beautiful",
+          type: "Adjetive"
         }
       ]
     };

@@ -1,6 +1,6 @@
 <template>
-  <li :class="[date ? 'date' : '', search ? 'search' : 'regular']">
-    <div class="left">
+  <li :class="[date ? 'with-date' : '', search ? 'search' : 'regular']">
+    <div class="left" :class="date ? 'inline' : ''">
       <h3 class="main-word">
         <div class="word">{{ word.word }}</div>
         /
@@ -12,8 +12,7 @@
       <div v-if="word.gender" class="tag clear">
         {{ word.gender.charAt(0) }}
       </div>
-      <div class="tag green">Verb</div>
-      <div class="tag blue">Noun</div>
+      <div class="tag" :class="typeOfWordColor">{{ word.type }}</div>
       <div class="line"></div>
       <div class="circle-icon yellow">
         <img src="@/assets/img/edit.svg" alt="" />
@@ -36,6 +35,15 @@ export default {
     word: {
       type: Object
     }
+  },
+  computed: {
+    typeOfWordColor() {
+      return {
+        green: this.word.type === "Noun",
+        blue: this.word.type === "Verb",
+        red: this.word.type === "Adjetive"
+      };
+    }
   }
 };
 </script>
@@ -47,13 +55,14 @@ li {
   align-items: center;
   padding: 2px 20px;
 
-  &.date {
+  &.with-date {
     padding: 15px 20px;
   }
 
   &.search {
     background: white;
     margin-bottom: 3px;
+    padding: 5px 20px;
   }
 
   &.regular {
@@ -67,7 +76,6 @@ li {
 }
 .main-word {
   display: flex;
-  margin-bottom: 5px;
 }
 .word {
   margin-right: 5px;
@@ -79,5 +87,16 @@ li {
 .elements {
   display: flex;
   align-items: center;
+}
+.left {
+  &.inline {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.date {
+  font-size: 11px;
+  margin-left: 30px;
 }
 </style>
