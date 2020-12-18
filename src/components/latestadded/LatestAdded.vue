@@ -8,39 +8,18 @@
 </template>
 
 <script>
-import List from "./../general/List.vue";
+import List from "@/components/general/List.vue";
+import data from "@/data/data.js";
 
 export default {
   name: "LatestAdded",
   components: {
     List,
   },
+
   data() {
     return {
-      words: [
-        {
-          word: "Brauchen",
-          meaning: "To need",
-          type: "Verb",
-        },
-        {
-          word: "Das Hause",
-          meaning: "House",
-          gender: "Neutral",
-          type: "Noun",
-        },
-        {
-          word: "Schön",
-          meaning: "Beautiful",
-          type: "Adjetive",
-        },
-        {
-          word: "Der Hund",
-          meaning: "Dog",
-          type: "Noun",
-          gender: "Masculine",
-        },
-      ],
+      words: data.slice(Math.max(data.length - 5, 1)).reverse(),
     };
   },
 };

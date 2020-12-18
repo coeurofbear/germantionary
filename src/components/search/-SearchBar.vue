@@ -1,5 +1,5 @@
 <template>
-  <div class="search">
+  <div>
     <h3>Search</h3>
     <div class="search-wrapper">
       <input class="search-bar" type="text" placeholder="Search for a word" />
@@ -16,9 +16,6 @@ export default {
 
 <style scoped lang="scss">
 @import "./src/assets/scss/variables";
-.search {
-  margin-bottom: 40px;
-}
 .search-wrapper {
   position: relative;
   img {
