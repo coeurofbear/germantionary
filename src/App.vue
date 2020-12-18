@@ -7,26 +7,27 @@
       <router-link to="/about">About</router-link>
     </div> -->
     <router-view />
+    <footer></footer>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import Header from '@/components/general/Header.vue';
-import Search from '@/components/search/Search.vue';
+import Header from "@/components/general/Header.vue";
+import Search from "@/components/search/Search.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     Header,
-    Search
-  }
+    Search,
+  },
 };
 </script>
 
 <style lang="scss">
-@import '~meyer-reset-sass/reset';
-@import './src/assets/scss/main';
+@import "~meyer-reset-sass/reset";
+@import "./src/assets/scss/main";
 
 @mixin font-face($name, $file, $weight: normal, $style: normal) {
   @font-face {
@@ -34,18 +35,18 @@ export default {
     font-style: $style;
     font-weight: $weight;
     font-display: swap;
-    src: url('#{$file}.eot') format('eot'), url('#{$file}.woff') format('woff'),
-      url('#{$file}.ttf') format('truetype');
+    src: url("#{$file}.eot") format("eot"), url("#{$file}.woff") format("woff"),
+      url("#{$file}.ttf") format("truetype");
   }
 }
 
 @include font-face(
-  'Neuzeit Grotesk',
-  './assets/fonts/neuzeit_grotesk_regular-webfont'
+  "Neuzeit Grotesk",
+  "./assets/fonts/neuzeit_grotesk_regular-webfont"
 );
 @include font-face(
-  'Neuzeit Grotesk',
-  './assets/fonts/neuzeit_grotesk_bold-webfont',
+  "Neuzeit Grotesk",
+  "./assets/fonts/neuzeit_grotesk_bold-webfont",
   bold
 );
 
@@ -59,5 +60,9 @@ export default {
 
 body {
   @include font-family-default;
+}
+
+footer {
+  height: 150px;
 }
 </style>
