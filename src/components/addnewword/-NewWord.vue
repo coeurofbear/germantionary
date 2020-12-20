@@ -13,6 +13,7 @@
       <option value="masculine">Masculine</option>
       <option value="feminine">Feminine</option>
     </select>
+    <button @click.prevent="addNewWord">Add new</button>
     <div class="circle-icon green">
       <img src="@/assets/img/plus.svg" alt="" />
     </div>
@@ -20,14 +21,26 @@
 </template>
 
 <script>
+import { db } from '../../main';
+
 export default {
-  name: "AddNewWord",
+  name: 'AddNewWord',
 
   data() {
     return {
-      searchedWord: "Brauchen",
+      searchedWord: 'Brauchen'
     };
   },
+
+  methods: {
+    addNewWord() {
+      db.collection('words').add({
+        value: 'Martin',
+        type: 'Noun',
+        gender: 'Neutral'
+      });
+    }
+  }
 };
 </script>
 
