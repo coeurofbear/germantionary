@@ -23,17 +23,14 @@
 export default {
   methods: {
     login() {
-      this.$router.replace("/");
-    },
+      this.$router.replace('/')
+    }
   },
   data() {
     return {
-      email: "",
-      password: "",
-    };
-  },
-};
+      email: '',
+      password: ''
+    }
+  }
+}
 </script>
-
-<style>
-</style>  

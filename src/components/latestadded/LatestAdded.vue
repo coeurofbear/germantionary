@@ -8,21 +8,27 @@
 </template>
 
 <script>
-import List from "@/components/general/List.vue";
-import data from "@/data/data.js";
+import List from '@/components/general/List.vue'
+import data from '@/data/data.js'
+//import { db } from '@/main.js'
 
 export default {
-  name: "LatestAdded",
+  name: 'LatestAdded',
   components: {
-    List,
+    List
   },
 
   data() {
     return {
-      words: data.slice(Math.max(data.length - 5, 1)).reverse(),
-    };
+      testCollection: [],
+      //words: db.slice(Math.max(db.length - 5, 1)).reverse()
+      words: data
+    }
   },
-};
+  mounted() {
+    console.log(this.words)
+  }
+}
 </script>
 <style scoped lang="scss">
 h3 {
