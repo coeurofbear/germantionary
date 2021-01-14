@@ -17,17 +17,19 @@
       />
       <select v-model="type" required name="type" id="type">
         <option disabled selected value>Type</option>
-        <option value="noun">Noun</option>
-        <option value="verb">Verb</option>
-        <option value="adjetive">Adjetive</option>
-        <option value="adverb">Adverb</option>
-        <option value="article">Article</option>
+        <option
+          v-for="(word, index) in typesOfWords"
+          :key="index"
+          :value="word"
+        >
+          {{ capitalizeFirstLetter(word) }}
+        </option>
       </select>
       <select v-model="gender" name="gender" id="gender">
         <option disabled selected value>Gender</option>
-        <option value="neutral">Neutral</option>
-        <option value="masculine">Masculine</option>
-        <option value="feminine">Feminine</option>
+        <option v-for="(gender, index) in genders" :key="index" :value="gender">
+          {{ capitalizeFirstLetter(gender) }}
+        </option>
       </select>
       <button class="circle-icon green">
         <img src="@/assets/img/plus.svg" alt="" />
@@ -54,7 +56,9 @@ export default {
       meaning: '',
       type: '',
       gender: '',
-      success: null
+      success: null,
+      typesOfWords: ['noun', 'verb', 'adjetive', 'adverb', 'article'],
+      genders: ['masculine', 'femenine', 'neutral']
     }
   },
   methods: {
@@ -74,11 +78,16 @@ export default {
       this.success = `Se ha agreado ${this.word} a la lista`
       this.word = this.meaning = this.type = this.gender = ''
     },
+
     printCurrentDate() {
       var getDate = new Date().getDate()
       var getFullYear = new Date().getFullYear()
       var getMonth = new Date().getMonth()
       return `${getDate}.${getMonth + 1}.${getFullYear}`
+    },
+
+    capitalizeFirstLetter(word) {
+      return word.charAt(0).toUpperCase() + word.slice(1)
     }
   }
 }

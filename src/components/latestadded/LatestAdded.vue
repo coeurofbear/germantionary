@@ -33,7 +33,6 @@ export default {
         .get()
         .then((querySnapshot) => {
           const documents = querySnapshot.docs.map((doc) => doc.data())
-          console.log(documents)
           this.words = documents
         })
     }
