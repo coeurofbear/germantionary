@@ -21,7 +21,7 @@
         <option value="verb">Verb</option>
         <option value="verb">Adjetive</option>
       </select>
-      <select v-model="gender" required name="gender" id="gender">
+      <select v-model="gender" name="gender" id="gender">
         <option disabled selected value>Gender</option>
         <option value="neutral">Neutral</option>
         <option value="masculine">Masculine</option>
@@ -55,9 +55,6 @@ export default {
       success: null
     }
   },
-  mounted() {
-    this.callFunction()
-  },
   methods: {
     addNewWord() {
       this.errors = []
@@ -69,35 +66,17 @@ export default {
         word: this.word,
         meaning: this.meaning,
         type: this.type,
-        gender: this.gender
+        gender: this.gender,
+        date: this.printCurrentDate()
       })
       this.success = `Se ha agreado ${this.word} a la lista`
       this.word = this.meaning = this.type = this.gender = ''
     },
-    callFunction() {
-      // .toJSON()
-      // .slice(0, 10)
-      // .replace(/-/g, '/')
+    printCurrentDate() {
       var getDate = new Date().getDate()
       var getFullYear = new Date().getFullYear()
-      var getHours = new Date().getHours()
-      var getMilliseconds = new Date().getMilliseconds()
-      var getMinutes = new Date().getMinutes()
       var getMonth = new Date().getMonth()
-      var getSeconds = new Date().getSeconds()
-      var getTime = new Date().getTime()
-      var getDay = new Date().getDay()
-      //Date.now()
-      console.log(Date.now())
-      console.log(getDate)
-      console.log(getFullYear)
-      console.log(getHours)
-      console.log(getMilliseconds)
-      console.log(getMinutes)
-      console.log(getMonth)
-      console.log(getSeconds)
-      console.log(getTime)
-      console.log(getDay)
+      return `${getDate}.${getMonth + 1}.${getFullYear}`
     }
   }
 }

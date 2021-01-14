@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12 col-lg-6">
-        <AddNewWord />
+        <NewWords />
         <LatestAdded />
       </div>
       <div class="col-12 col-lg-5 offset-lg-1">
@@ -13,15 +13,15 @@
 </template>
 
 <script>
-import AddNewWord from "@/components/addnewword/AddNewWord.vue";
-import LatestAdded from "@/components/latestadded/LatestAdded.vue";
+import NewWords from '@/components/addnewword/NewWords.vue'
+import LatestAdded from '@/components/latestadded/LatestAdded.vue'
 // @ is an alias to /src
 
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
-    AddNewWord,
-    LatestAdded,
-  },
-};
+    NewWords,
+    LatestAdded
+  }
+}
 </script>

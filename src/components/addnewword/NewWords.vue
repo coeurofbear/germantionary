@@ -2,21 +2,21 @@
   <div>
     <h3>Add a new word</h3>
     <ul class="list">
-      <NewWord />
+      <AddNewWord />
     </ul>
   </div>
 </template>
 
 <script>
-import NewWord from './-NewWord.vue';
+import AddNewWord from './-AddNewWord.vue'
 
 export default {
-  name: 'AddNewWord',
+  name: 'NewWords',
 
   components: {
-    NewWord
+    AddNewWord
   }
-};
+}
 </script>
 
 <style scoped lang="scss">
