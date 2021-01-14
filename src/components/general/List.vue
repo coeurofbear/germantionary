@@ -23,29 +23,31 @@
 
 <script>
 export default {
-  name: "SearchListElement",
+  name: 'SearchListElement',
   props: {
     date: {
-      type: Boolean,
+      type: Boolean
     },
     search: {
       type: Boolean,
-      default: false,
+      default: false
     },
     word: {
-      type: Object,
-    },
+      type: Object
+    }
   },
   computed: {
     typeOfWordColor() {
       return {
-        green: this.word.type === "Noun",
-        blue: this.word.type === "Verb",
-        red: this.word.type === "Adjetive",
-      };
-    },
-  },
-};
+        green: this.word.type === 'noun',
+        blue: this.word.type === 'verb',
+        red: this.word.type === 'adjetive',
+        purple: this.word.type === 'adverb',
+        pink: this.word.type === 'article'
+      }
+    }
+  }
+}
 </script>
 
 <style scoped lang="scss">

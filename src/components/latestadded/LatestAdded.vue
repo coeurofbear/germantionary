@@ -9,8 +9,8 @@
 
 <script>
 import List from '@/components/general/List.vue'
-import data from '@/data/data.js'
-//import { db } from '@/main.js'
+import { db } from '@/main.js'
+//import data from '@/data/data.js'
 
 export default {
   name: 'LatestAdded',
@@ -20,13 +20,23 @@ export default {
 
   data() {
     return {
-      testCollection: [],
       //words: db.slice(Math.max(db.length - 5, 1)).reverse()
-      words: data
+      words: []
     }
   },
   mounted() {
-    console.log(this.words)
+    this.getData()
+  },
+  methods: {
+    getData() {
+      db.collection('words')
+        .get()
+        .then((querySnapshot) => {
+          const documents = querySnapshot.docs.map((doc) => doc.data())
+          console.log(documents)
+          this.words = documents
+        })
+    }
   }
 }
 </script>

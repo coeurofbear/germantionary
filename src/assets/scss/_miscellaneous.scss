@@ -21,12 +21,18 @@
   &.blue {
     background: $blue;
   }
+  &.red {
+    background: $red;
+  }
+  &.purple {
+    background: $purple;
+  }
+  &.pink {
+    background: $pink;
+  }
   &.clear {
     padding: 3px 5px;
     border: 1px $black solid;
-  }
-  &.red {
-    background: $red;
   }
 }
 
