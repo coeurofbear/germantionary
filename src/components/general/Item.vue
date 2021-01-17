@@ -1,12 +1,12 @@
 <template>
-  <li :class="[date ? 'with-date' : '', search ? 'search' : 'regular']">
+  <li :class="classes">
     <div class="left" :class="date ? 'inline' : ''">
       <h3 class="main-word">
         <div class="word">{{ word.word }}</div>
         /
         <div class="meaning">{{ word.meaning }}</div>
       </h3>
-      <div v-if="date" class="date">Added in: <span>1/10/2020</span></div>
+      <div v-if="date" class="date">Added in: <span>{{word.date}}</span></div>
     </div>
     <div class="elements">
       <div v-if="word.gender" class="tag clear">
@@ -23,7 +23,7 @@
 
 <script>
 export default {
-  name: 'SearchListElement',
+  name: 'Item',
   props: {
     date: {
       type: Boolean
@@ -45,6 +45,12 @@ export default {
         purple: this.word.type === 'adverb',
         pink: this.word.type === 'article'
       }
+    },
+    classes() {
+      return {
+        search: this.search,
+        regular: !this.search
+      }
     }
   }
 }
@@ -57,14 +63,10 @@ li {
   align-items: center;
   padding: 2px 20px;
 
-  &.with-date {
-    padding: 15px 20px;
-  }
-
   &.search {
     background: white;
     margin-bottom: 3px;
-    padding: 5px 20px;
+    padding: 10px 20px;
   }
 
   &.regular {

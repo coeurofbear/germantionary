@@ -2,7 +2,7 @@
   <div class="search-results">
     <h3>Search results for '{{ searchedWord }}'</h3>
     <ul class="list">
-      <List
+      <Item
         date
         search
         v-for="(word, index) in words"
@@ -14,37 +14,33 @@
 </template>
 
 <script>
-import List from "@/components/general/List.vue";
+import Item from '@/components/general/Item.vue'
+import { db } from '@/main.js'
 
 export default {
-  name: "SearchResults",
+  name: 'SearchResults',
   components: {
-    List,
+    Item
   },
   data() {
     return {
-      searchedWord: "Brauchen",
-      words: [
-        {
-          word: "Brauchen",
-          meaning: "To need",
-          type: "Verb",
-        },
-        {
-          word: "Das Hause",
-          meaning: "House",
-          gender: "Neutral",
-          type: "Noun",
-        },
-        {
-          word: "Schön",
-          meaning: "Beautiful",
-          type: "Adjetive",
-        },
-      ],
-    };
+      words: []
+    }
   },
-};
+  methods: {
+    getData() {
+      db.collection('words')
+        .get()
+        .then((querySnapshot) => {
+          const words = querySnapshot.docs.map((doc) => doc.data())
+          this.words = words
+        })
+    }
+  },
+  beforeMount() {
+    this.getData()
+  }
+}
 </script>
 <style scoped lang="scss">
 h3 {
