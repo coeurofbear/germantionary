@@ -9,9 +9,7 @@
 
 <script>
 import Item from '@/components/general/Item.vue'
-//import data from '@/data/data.js'
-import getData from '@/data/dataDB.js'
-//import { db } from '@/main.js'
+import { db } from '@/main.js'
 
 export default {
   name: 'LatestAdded',
@@ -26,19 +24,17 @@ export default {
     }
   },
   methods: {
-    // getData() {
-    //   db.collection('words')
-    //     .get()
-    //     .then((querySnapshot) => {
-    //       const words = querySnapshot.docs.map((doc) => doc.data())
-    //       this.words = words
-    //     })
-    // }
+    getData() {
+      db.collection('words')
+        .get()
+        .then((querySnapshot) => {
+          const words = querySnapshot.docs.map((doc) => doc.data())
+          this.words = words
+        })
+    }
   },
-  mounted() {
-    getData()
-    console.log(this.words)
-    console.log('lool')
+  beforeMount() {
+    this.getData()
   }
 }
 </script>
