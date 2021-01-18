@@ -6,7 +6,7 @@
         /
         <div class="meaning">{{ word.meaning }}</div>
       </h3>
-      <div v-if="date" class="date">Added in: <span>{{word.date}}</span></div>
+      <div v-if="date" class="date">Added in: <span>{{ word.date.replace(/\//g, '.') }}</span></div>
     </div>
     <div class="elements">
       <div v-if="word.gender" class="tag clear">

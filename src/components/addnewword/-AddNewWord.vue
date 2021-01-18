@@ -46,9 +46,6 @@
 
 <script>
 import { db } from '@/main.js'
-const getDate = new Date().getDate()
-const getFullYear = new Date().getFullYear()
-const getMonth = new Date().getMonth()
 
 export default {
   name: 'AddNewWord',
@@ -76,18 +73,14 @@ export default {
         meaning: this.meaning,
         type: this.type,
         gender: this.gender,
-        date: this.printCurrentDate(),
-        dateFormat: this.addFormatedDate()
+        date: new Date().toLocaleString('en-GB', {
+          year: 'numeric',
+          month: 'numeric',
+          day: 'numeric'
+        })
       })
       this.success = `'${this.word}' has been added to the list.`
       this.word = this.meaning = this.type = this.gender = ''
-    },
-
-    printCurrentDate() {
-      return `${getDate}.${getMonth + 1}.${getFullYear}`
-    },
-    addFormatedDate() {
-      return `${getFullYear}.${getMonth + 1}.${getDate}`
     },
 
     capitalizeFirstLetter(word) {

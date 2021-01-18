@@ -25,6 +25,7 @@ export default {
   methods: {
     getData() {
       db.collection('words')
+        .orderBy('date', 'desc')
         .get()
         .then((querySnapshot) => {
           let words = querySnapshot.docs.map((doc) => doc.data())
