@@ -2,7 +2,7 @@
   <div class="latest-added-words">
     <h3>Latest added words</h3>
     <ul class="list">
-      <Item v-for="(word, index) in words" :word="word" :key="index"/>
+      <Item v-for="(word, index) in words" :word="word" :key="index" date/>
     </ul>
   </div>
 </template>
@@ -19,7 +19,6 @@ export default {
 
   data() {
     return {
-      //words: db.slice(Math.max(db.length - 5, 1)).reverse()
       words: []
     }
   },
@@ -28,7 +27,7 @@ export default {
       db.collection('words')
         .get()
         .then((querySnapshot) => {
-          const words = querySnapshot.docs.map((doc) => doc.data())
+          let words = querySnapshot.docs.map((doc) => doc.data())
           this.words = words
         })
     }
