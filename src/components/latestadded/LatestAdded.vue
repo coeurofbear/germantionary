@@ -16,6 +16,12 @@ export default {
   components: {
     Item
   },
+  props: {
+    updateData: {
+      type: Boolean,
+      default: false
+    }
+  },
 
   data() {
     return {
@@ -35,6 +41,11 @@ export default {
   },
   beforeMount() {
     this.getData()
+  },
+  mounted() {
+    if (this.updateData) {
+      this.getData()
+    }
   }
 }
 </script>

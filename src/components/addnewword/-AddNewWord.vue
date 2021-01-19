@@ -58,7 +58,8 @@ export default {
       gender: '',
       success: null,
       typesOfWords: ['noun', 'verb', 'adjetive', 'adverb', 'article'],
-      genders: ['masculine', 'femenine', 'neutral']
+      genders: ['masculine', 'femenine', 'neutral'],
+      update: false
     }
   },
   methods: {
@@ -85,6 +86,15 @@ export default {
 
     capitalizeFirstLetter(word) {
       return word.charAt(0).toUpperCase() + word.slice(1)
+    },
+    updateData() {
+      db.collection('words').onSnapshot((doc) => {
+        this.update = doc.metadata.hasPendingWrites
+      })
+      if (this.update) {
+        console.log('emitted')
+        this.$emit('update')
+      }
     }
   }
 }

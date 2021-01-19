@@ -2,8 +2,8 @@
   <div class="container">
     <div class="row">
       <div class="col-12 col-lg-6">
-        <NewWords />
-        <LatestAdded />
+        <NewWords @update="updateData" />
+        <LatestAdded :updateData="update"/>
       </div>
       <div class="col-12 col-lg-5 offset-lg-1">
         <h1>Welcome to Germantionary</h1>
@@ -22,6 +22,17 @@ export default {
   components: {
     NewWords,
     LatestAdded
+  },
+  data() {
+    return {
+      update: false
+    }
+  },
+  methods: {
+    updateData() {
+      this.update = true
+      console.log('emitted3')
+    }
   }
 }
 </script>
