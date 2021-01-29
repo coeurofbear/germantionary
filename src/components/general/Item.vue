@@ -6,7 +6,9 @@
         /
         <div class="meaning">{{ word.meaning }}</div>
       </h3>
-      <div v-if="date" class="date">Added in: <span>{{ word.date.replace(/\//g, '.') }}</span></div>
+      <div v-if="date" class="date">
+        Added in: <span>{{ word.date.replace(/\//g, '.') }}</span>
+      </div>
     </div>
     <div class="elements">
       <div v-if="word.gender" class="tag clear">
@@ -14,7 +16,7 @@
       </div>
       <div class="tag" :class="typeOfWordColor">{{ word.type }}</div>
       <div class="line"></div>
-      <div class="circle-icon yellow">
+      <div @click="deleteItem(wordId)" class="circle-icon yellow">
         <img src="@/assets/img/edit.svg" alt="" />
       </div>
     </div>
@@ -22,6 +24,8 @@
 </template>
 
 <script>
+import { db } from '@/main.js'
+
 export default {
   name: 'Item',
   props: {
@@ -34,6 +38,12 @@ export default {
     },
     word: {
       type: Object
+    },
+    edit: {
+      type: Function
+    },
+    wordId: {
+      type: String
     }
   },
   computed: {
@@ -51,6 +61,26 @@ export default {
         search: this.search,
         regular: !this.search
       }
+    }
+  },
+  methods: {
+    deleteItem(id) {
+      const doc = db.collection('words').doc(id)
+      doc.delete().then(() => {
+        alert(`Document ${id} was successfully deleted!`)
+        this.$emit('deleted')
+      })
+      // doc.get().then(doc => {
+      //   console.log(doc.data())
+      // })
+      // console.log(word)
+      // const colleccion = db.collection('words')
+      // colleccion.get().then(words => {
+      //   words.docs.map(doc => {
+      //     //console.log(doc.data())
+      //     console.log(doc.id)
+      //   })
+      // })
     }
   }
 }

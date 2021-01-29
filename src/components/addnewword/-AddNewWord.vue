@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form @submit.prevent="addNewWord" id="formVue" class="add-word-wrapper">
+    <form @submit.prevent="addNewWord()" id="formVue" class="add-word-wrapper">
       <input
         v-model="word"
         required
@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import { db } from '@/main.js'
+import { collection } from '@/main.js'
 
 export default {
   name: 'AddNewWord',
@@ -69,7 +69,7 @@ export default {
         this.errors.push('Please fill all the fields.')
         return
       }
-      db.collection('words').add({
+      collection.add({
         word: this.word,
         meaning: this.meaning,
         type: this.type,
@@ -82,19 +82,18 @@ export default {
       })
       this.success = `'${this.word}' has been added to the list.`
       this.word = this.meaning = this.type = this.gender = ''
+      this.updateData()
     },
 
     capitalizeFirstLetter(word) {
       return word.charAt(0).toUpperCase() + word.slice(1)
     },
     updateData() {
-      db.collection('words').onSnapshot((doc) => {
+      collection.onSnapshot(doc => {
         this.update = doc.metadata.hasPendingWrites
       })
-      if (this.update) {
-        console.log('emitted')
-        this.$emit('update')
-      }
+      console.log('emitted')
+      this.$emit('update')
     }
   }
 }

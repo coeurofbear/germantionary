@@ -2,14 +2,21 @@
   <div class="latest-added-words">
     <h3>Latest added words</h3>
     <ul class="list">
-      <Item v-for="(word, index) in words" :word="word" :key="index" date/>
+      <Item
+        v-for="(word, index) in words"
+        :word="word"
+        :key="index"
+        date
+        :wordId="wordsId[index]"
+        @deleted="getData()"
+      />
     </ul>
   </div>
 </template>
 
 <script>
 import Item from '@/components/general/Item.vue'
-import { db } from '@/main.js'
+import { collection } from '@/main.js'
 
 export default {
   name: 'LatestAdded',
@@ -25,17 +32,18 @@ export default {
 
   data() {
     return {
-      words: []
+      words: [],
+      wordsId: ''
     }
   },
   methods: {
     getData() {
-      db.collection('words')
+      collection
         .orderBy('date', 'desc')
         .get()
-        .then((querySnapshot) => {
-          let words = querySnapshot.docs.map((doc) => doc.data())
-          this.words = words
+        .then(colection => {
+          this.words = colection.docs.map(doc => doc.data())
+          this.wordsId = colection.docs.map(doc => doc.id)
         })
     }
   },

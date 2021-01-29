@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-12 col-lg-6">
         <NewWords @update="updateData" />
-        <LatestAdded :updateData="update"/>
+        <LatestAdded :updateData="update" />
       </div>
       <div class="col-12 col-lg-5 offset-lg-1">
         <h1>Welcome to Germantionary</h1>

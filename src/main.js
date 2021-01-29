@@ -20,6 +20,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig)
 
 export const db = firebase.firestore()
+export const collection = db.collection('words')
 
 new Vue({
   router,
