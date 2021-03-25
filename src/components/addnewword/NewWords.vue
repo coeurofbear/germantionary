@@ -17,9 +17,8 @@ export default {
     AddNewWord
   },
   methods: {
-    emit() {
-      this.$emit('update')
-      console.log('emitted2')
+    emit(value) {
+      this.$emit('update-two', value)
     }
   }
 }

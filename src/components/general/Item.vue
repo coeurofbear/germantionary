@@ -7,7 +7,8 @@
         <div class="meaning">{{ word.meaning }}</div>
       </h3>
       <div v-if="date" class="date">
-        Added in: <span>{{ word.date.replace(/\//g, '.') }}</span>
+        <!-- Added in: <span>{{ word.date.replace(/\//g, '.') }}</span> -->
+        Added in: <span>{{ dateFormat }}</span>
       </div>
     </div>
     <div class="elements">
@@ -46,6 +47,19 @@ export default {
       type: String
     }
   },
+  data() {
+    return {
+      dateFormat: new Date().toLocaleString(
+        'en-GB',
+        {
+          year: 'numeric',
+          month: 'numeric',
+          day: 'numeric'
+        },
+        this.word.date
+      )
+    }
+  },
   computed: {
     typeOfWordColor() {
       return {
@@ -70,17 +84,6 @@ export default {
         alert(`Document ${id} was successfully deleted!`)
         this.$emit('deleted')
       })
-      // doc.get().then(doc => {
-      //   console.log(doc.data())
-      // })
-      // console.log(word)
-      // const colleccion = db.collection('words')
-      // colleccion.get().then(words => {
-      //   words.docs.map(doc => {
-      //     //console.log(doc.data())
-      //     console.log(doc.id)
-      //   })
-      // })
     }
   }
 }

@@ -25,8 +25,8 @@ export default {
   },
   props: {
     updateData: {
-      type: Boolean,
-      default: false
+      type: Object,
+      default: null
     }
   },
 
@@ -50,8 +50,8 @@ export default {
   beforeMount() {
     this.getData()
   },
-  mounted() {
-    if (this.updateData) {
+  watch: {
+    updateData() {
       this.getData()
     }
   }
