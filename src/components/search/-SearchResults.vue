@@ -1,7 +1,8 @@
 <template>
   <div class="search-results">
     <h3>Search results for '{{ searchedWord }}'</h3>
-    <ul class="list">
+    <p v-if="!words">No results for '{{ searchedWord }}'</p>
+    <ul class="list" v-else>
       <Item
         date
         search
@@ -15,7 +16,7 @@
 
 <script>
 import Item from '@/components/general/Item.vue'
-import { db } from '@/main.js'
+import { collection } from '@/main.js'
 
 export default {
   name: 'SearchResults',
@@ -24,21 +25,28 @@ export default {
   },
   data() {
     return {
-      words: []
+      wordsList: [],
+      words: null
+    }
+  },
+  props: {
+    searchedWord: {
+      type: String,
+      default: ''
+    }
+  },
+  watch: {
+    searchedWord() {
+      this.filterData(this.searchedWord)
     }
   },
   methods: {
-    getData() {
-      db.collection('words')
-        .get()
-        .then((querySnapshot) => {
-          const words = querySnapshot.docs.map((doc) => doc.data())
-          this.words = words
-        })
+    filterData(searchedWord) {
+      collection.get().then(colection => {
+        this.wordsList = colection.docs.map(doc => doc.data())
+      })
+      this.words = this.wordsList.filter(word => word.word === searchedWord)
     }
-  },
-  beforeMount() {
-    this.getData()
   }
 }
 </script>

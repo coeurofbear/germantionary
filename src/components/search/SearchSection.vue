@@ -1,8 +1,8 @@
 <template>
   <div class="search-section">
     <div class="container">
-      <SearchBar />
-      <SearchResults v-if="false" />
+      <SearchBar v-model="searchedWord" />
+      <SearchResults :searchedWord="searchedWord" />
     </div>
   </div>
 </template>
@@ -17,6 +17,11 @@ export default {
   components: {
     SearchResults,
     SearchBar
+  },
+  data() {
+    return {
+      searchedWord: ''
+    }
   }
 }
 </script>
