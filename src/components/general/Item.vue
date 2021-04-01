@@ -47,20 +47,14 @@ export default {
       type: String
     }
   },
-  data() {
-    return {
-      dateFormat: new Date().toLocaleString(
-        'en-GB',
-        {
-          year: 'numeric',
-          month: 'numeric',
-          day: 'numeric'
-        },
-        this.word.date
-      )
-    }
-  },
   computed: {
+    dateFormat() {
+      return new Date(this.word.date.seconds * 1000).toLocaleString('en-GB', {
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric'
+      })
+    },
     typeOfWordColor() {
       return {
         green: this.word.type === 'noun',
