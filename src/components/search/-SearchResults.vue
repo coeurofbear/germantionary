@@ -40,12 +40,24 @@ export default {
       this.filterData(this.searchedWord)
     }
   },
+  mounted() {
+    this.getData()
+  },
   methods: {
-    filterData(searchedWord) {
+    getData() {
       collection.get().then(colection => {
         this.wordsList = colection.docs.map(doc => doc.data())
       })
-      this.words = this.wordsList.filter(word => word.word === searchedWord)
+    },
+    filterData(searchedWord) {
+      this.words = this.wordsList.filter(word => {
+        if (searchedWord.length > 0) {
+          return (
+            word.word.toUpperCase().includes(searchedWord.toUpperCase()) ||
+            word.meaning.toUpperCase().includes(searchedWord.toUpperCase())
+          )
+        }
+      })
     }
   }
 }
