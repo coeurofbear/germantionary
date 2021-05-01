@@ -76,7 +76,7 @@ export default {
       const doc = db.collection('words').doc(id)
       doc.delete().then(() => {
         alert(`Document ${id} was successfully deleted!`)
-        this.$emit('deleted')
+        this.$store.commit('refreshList')
       })
     }
   }
