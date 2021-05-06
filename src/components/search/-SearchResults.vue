@@ -45,6 +45,8 @@ export default {
   },
   methods: {
     getData() {
+      // Using firebase.firestore.collection().get() might be doing more work than needed. See:
+      // https://firebase.google.com/docs/database/web/read-and-write#read_data_once_with_get
       collection.get().then(colection => {
         this.wordsList = colection.docs.map(doc => doc.data())
       })
