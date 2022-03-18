@@ -1,14 +1,12 @@
 <template>
   <div>
     <h3>Add a new word</h3>
-    <ul class="list">
-      <AddNewWord @update="emit" />
-    </ul>
+    <AddNewWord @update="emit" />
   </div>
 </template>
 
 <script>
-import AddNewWord from './-AddNewWord.vue'
+import AddNewWord from '@/components/AddNewWord.vue'
 
 export default {
   name: 'NewWords',

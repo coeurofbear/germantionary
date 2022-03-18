@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import Item from '@/components/general/Item.vue'
+import Item from '@/components/Item.vue'
 import { collection } from '@/main.js'
 
 export default {

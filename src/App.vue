@@ -13,8 +13,8 @@
 
 <script>
 // @ is an alias to /src
-import Header from '@/components/general/Header.vue'
-import SearchSection from '@/components/search/SearchSection.vue'
+import Header from '@/components/Header.vue'
+import SearchSection from '@/sections/SearchSection.vue'
 
 export default {
   name: 'App',

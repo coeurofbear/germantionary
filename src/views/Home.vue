@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import NewWords from '@/components/addnewword/NewWords.vue'
-import LatestAdded from '@/components/latestadded/LatestAdded.vue'
+import NewWords from '@/sections/AddWordsSection.vue'
+import LatestAdded from '@/sections/LatestAddedSection.vue'
 
 // @ is an alias to /src
 

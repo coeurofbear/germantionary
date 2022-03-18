@@ -9,8 +9,8 @@
 
 <script>
 // @ is an alias to /src
-import SearchBar from '@/components/search/-SearchBar.vue'
-import SearchResults from '@/components/search/-SearchResults.vue'
+import SearchBar from '@/components/SearchBar.vue'
+import SearchResults from '@/components/SearchResults.vue'
 
 export default {
   name: 'SearchSection',
