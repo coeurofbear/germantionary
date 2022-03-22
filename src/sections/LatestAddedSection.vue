@@ -3,14 +3,7 @@
     <h3>Latest added words: {{ words.length }}</h3>
     <br />
     <ul class="list">
-      <Item
-        v-for="(word, index) in words"
-        :word="word"
-        :key="index"
-        date
-        :wordId="word.wordId"
-        @deleted="getData()"
-      />
+      <Item v-for="(word, index) in words" :word="word" :key="index" date />
     </ul>
   </div>
 </template>
@@ -43,7 +36,7 @@ export default {
       })
     }
   },
-  beforeMount() {
+  mounted() {
     this.getData()
   }
 }

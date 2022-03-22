@@ -16,7 +16,7 @@
       </div>
       <div class="tag" :class="typeOfWordColor">{{ word.type }}</div>
       <div class="line"></div>
-      <div @click="deleteItem(wordId)" class="circle-icon yellow">
+      <div @click="deleteItem(word.wordId)" class="circle-icon yellow">
         <img src="@/assets/img/edit.svg" alt="" />
       </div>
     </div>
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { colection } from '@/main.js'
+import { collection } from '@/main.js'
 
 export default {
   name: 'Item',
@@ -42,9 +42,6 @@ export default {
     },
     edit: {
       type: Function
-    },
-    wordId: {
-      type: String
     }
   },
   computed: {
@@ -73,14 +70,9 @@ export default {
   },
   methods: {
     deleteItem(id) {
-      colection
-        .doc(id)
-        .delete()
-        .then(() => {
-          alert(`Document ${id} was successfully deleted!`)
-          this.$emit('deleted')
-          this.$store.commit('refreshList')
-        })
+      const itemToDelete = collection.doc(id)
+      alert(`Document ${id} was successfully deleted!`)
+      itemToDelete.delete()
     }
   }
 }

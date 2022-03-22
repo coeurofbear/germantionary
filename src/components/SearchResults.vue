@@ -1,12 +1,12 @@
 <template>
   <div class="search-results">
     <h3>Search results for '{{ searchedWord }}'</h3>
-    <p v-if="!words">No results for '{{ searchedWord }}'</p>
+    <p v-if="!filteredWords">No results for '{{ searchedWord }}'</p>
     <ul class="list" v-else>
       <Item
         date
         search
-        v-for="(word, index) in words"
+        v-for="(word, index) in filteredWords"
         :word="word"
         :key="index"
       />
@@ -25,8 +25,8 @@ export default {
   },
   data() {
     return {
-      wordsList: [],
-      words: null
+      words: [],
+      filteredWords: null
     }
   },
   props: {
@@ -45,12 +45,17 @@ export default {
   },
   methods: {
     getData() {
-      collection.onSnapshot(
-        colection => (this.wordsList = colection.docs.map(doc => doc.data()))
-      )
+      collection.onSnapshot(colection => {
+        this.words = colection.docs.map(doc => {
+          return {
+            ...doc.data(),
+            wordId: doc.id
+          }
+        })
+      })
     },
     filterData(searchedWord) {
-      this.words = this.wordsList.filter(word => {
+      this.filteredWords = this.words.filter(word => {
         if (searchedWord.length > 0) {
           return (
             word.word.toUpperCase().includes(searchedWord.toUpperCase()) ||
