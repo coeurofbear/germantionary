@@ -7,7 +7,6 @@
         <div class="meaning">{{ word.meaning }}</div>
       </h3>
       <div v-if="date" class="date">
-        <!-- Added in: <span>{{ word.date.replace(/\//g, '.') }}</span> -->
         Added in: <span>{{ dateFormat }}</span>
       </div>
     </div>
@@ -25,10 +24,11 @@
 </template>
 
 <script>
-import { db } from '@/main.js'
+import { colection } from '@/main.js'
 
 export default {
   name: 'Item',
+
   props: {
     date: {
       type: Boolean
@@ -73,12 +73,14 @@ export default {
   },
   methods: {
     deleteItem(id) {
-      const doc = db.collection('words').doc(id)
-      doc.delete().then(() => {
-        alert(`Document ${id} was successfully deleted!`)
-        this.$emit('deleted')
-        this.$store.commit('refreshList')
-      })
+      colection
+        .doc(id)
+        .delete()
+        .then(() => {
+          alert(`Document ${id} was successfully deleted!`)
+          this.$emit('deleted')
+          this.$store.commit('refreshList')
+        })
     }
   }
 }

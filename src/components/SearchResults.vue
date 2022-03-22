@@ -45,9 +45,9 @@ export default {
   },
   methods: {
     getData() {
-      collection.get().then(colection => {
-        this.wordsList = colection.docs.map(doc => doc.data())
-      })
+      collection.onSnapshot(
+        colection => (this.wordsList = colection.docs.map(doc => doc.data()))
+      )
     },
     filterData(searchedWord) {
       this.words = this.wordsList.filter(word => {

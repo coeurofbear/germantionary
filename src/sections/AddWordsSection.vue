@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3>Add a new word</h3>
-    <AddNewWord @update="emit" />
+    <AddNewWord />
   </div>
 </template>
 
@@ -13,11 +13,6 @@ export default {
 
   components: {
     AddNewWord
-  },
-  methods: {
-    emit(value) {
-      this.$emit('update-two', value)
-    }
   }
 }
 </script>

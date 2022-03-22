@@ -16,6 +16,7 @@
 <script>
 export default {
   name: 'SearchBar',
+
   data() {
     return {
       searchValue: ''
@@ -31,8 +32,10 @@ export default {
 
 <style scoped lang="scss">
 @import './src/assets/scss/variables';
+
 .search-wrapper {
   position: relative;
+
   img {
     position: absolute;
     right: 12px;
