@@ -23,6 +23,11 @@ export default {
     return {
       searchedWord: ''
     }
+  },
+  watch: {
+    '$route.path'() {
+      this.searchedWord = ''
+    }
   }
 }
 </script>

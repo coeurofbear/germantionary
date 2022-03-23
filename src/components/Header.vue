@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <div class="container">
-      <h1>Germantionary</h1>
+      <router-link to="/"><h1>Germantionary</h1></router-link>
     </div>
   </header>
 </template>
