@@ -1,15 +1,12 @@
 <template>
-  <div>
-    <h3>Search</h3>
-    <div class="search-wrapper">
-      <input
-        class="search-bar"
-        type="text"
-        placeholder="Search for a word"
-        v-model="searchValue"
-      />
-      <img src="@/assets/img/search.svg" alt="" />
-    </div>
+  <div class="search-wrapper">
+    <input
+      class="search-bar"
+      type="text"
+      placeholder="Search for a word"
+      v-model="searchValue"
+    />
+    <img src="@/assets/img/search.svg" alt="" />
   </div>
 </template>
 
@@ -43,9 +40,5 @@ export default {
     transform: translateY(-50%);
     cursor: pointer;
   }
-}
-
-h3 {
-  padding-bottom: 1rem;
 }
 </style>

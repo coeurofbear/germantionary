@@ -40,7 +40,7 @@
         <li v-for="(error, index) in errors" :key="index">{{ error }}</li>
       </ul>
     </div>
-    <p v-if="success">{{ success }}</p>
+    <p class="success" v-if="success">{{ success }}</p>
   </div>
 </template>
 
@@ -60,13 +60,7 @@ export default {
       },
       success: null,
       typesOfWords: ['noun', 'verb', 'adjetive', 'adverb', 'article'],
-      genders: ['masculine', 'femenine', 'neutral'],
-      update: null
-    }
-  },
-  watch: {
-    update() {
-      this.$emit('update', this.update)
+      genders: ['masculine', 'femenine', 'neutral']
     }
   },
   methods: {
@@ -86,10 +80,6 @@ export default {
       this.success = `'${this.word.word}' has been added to the list.`
       this.word.word = this.word.meaning = this.word.type = this.word.gender =
         ''
-
-      collection.onSnapshot(doc => {
-        this.update = doc.metadata
-      })
     },
 
     capitalizeFirstLetter(word) {
@@ -100,9 +90,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-h3 {
-  margin-bottom: 35px;
-}
+@import './src/assets/scss/main';
 
 .add-word-wrapper {
   display: flex;
@@ -116,5 +104,8 @@ h3 {
   .circle-icon {
     align-self: center;
   }
+}
+.success {
+  margin-top: 10px;
 }
 </style>

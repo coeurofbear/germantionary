@@ -1,16 +1,20 @@
 <template>
-  <div class="search-results">
-    <h3>Search results for '{{ searchedWord }}'</h3>
-    <p v-if="!filteredWords">No results for '{{ searchedWord }}'</p>
-    <ul class="list" v-else>
-      <Item
-        date
-        search
-        v-for="(word, index) in filteredWords"
-        :word="word"
-        :key="index"
-      />
-    </ul>
+  <div>
+    <h3 v-if="searchedWord">Search results for '{{ searchedWord }}'</h3>
+    <div v-if="searchedWord && !filteredWords.length">
+      <p>No results for '{{ searchedWord }}'</p>
+    </div>
+    <div v-else>
+      <ul class="list">
+        <Item
+          date
+          search
+          v-for="(word, index) in filteredWords"
+          :word="word"
+          :key="index"
+        />
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -69,10 +73,7 @@ export default {
 </script>
 <style scoped lang="scss">
 h3 {
-  margin-bottom: 35px;
-}
-
-.search-results {
+  margin-bottom: 25px;
   margin-top: 40px;
 }
 </style>
