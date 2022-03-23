@@ -40,8 +40,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   padding: 10px;
   border-radius: 50%;
   cursor: pointer;
@@ -55,6 +55,9 @@
   }
   &.yellow {
     background: $yellow;
+  }
+  &.red {
+    background: $red-delete;
   }
 }
 

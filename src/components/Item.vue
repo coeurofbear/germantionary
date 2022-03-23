@@ -17,7 +17,7 @@
       <div class="tag" :class="typeOfWordColor">{{ word.type }}</div>
       <div class="line"></div>
       <div @click="deleteItem(word.wordId)" class="circle-icon yellow">
-        <img src="@/assets/img/edit.svg" alt="" />
+        <img src="@/assets/img/delete.svg" alt="" />
       </div>
     </div>
   </li>
@@ -83,7 +83,7 @@ li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2px 20px;
+  padding: 6px 20px;
 
   &.search {
     background: white;

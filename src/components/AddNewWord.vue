@@ -80,6 +80,9 @@ export default {
       this.success = `'${this.word.word}' has been added to the list.`
       this.word.word = this.word.meaning = this.word.type = this.word.gender =
         ''
+      setTimeout(() => {
+        this.success = null
+      }, 4000)
     },
 
     capitalizeFirstLetter(word) {
