@@ -1,5 +1,5 @@
 <template>
-  <li :class="classes">
+  <li :class="classes" @click="goToDetail(word.wordId)">
     <div class="left" :class="date ? 'inline' : ''">
       <h3 class="main-word">
         <div class="word">{{ word.word }}</div>
@@ -73,6 +73,11 @@ export default {
       const itemToDelete = collection.doc(id)
       alert(`Document ${id} was successfully deleted!`)
       itemToDelete.delete()
+    },
+    goToDetail(wordId) {
+      if (this.$route.params.id !== wordId) {
+        this.$router.push(`/detail/${wordId}`)
+      }
     }
   }
 }
