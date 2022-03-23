@@ -20,14 +20,14 @@
 </template>
 
 <script>
-import firebase from 'firebase';
+import firebase from 'firebase'
 
 export default {
   data() {
     return {
       email: '',
       password: ''
-    };
+    }
   },
   methods: {
     signup() {
@@ -36,15 +36,15 @@ export default {
         .createUserWithEmailAndPassword(this.email, this.password)
         .then(
           function(user) {
-            alert('your account has been created' + user);
+            alert('your account has been created' + user)
           },
           function(err) {
-            console.error(err);
+            console.error(err)
           }
-        );
+        )
     }
   }
-};
+}
 </script>
 
 <style></style>
