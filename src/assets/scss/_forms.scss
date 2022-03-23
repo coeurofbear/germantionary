@@ -1,3 +1,5 @@
+@import './family-fonts';
+
 .search-bar {
   border-radius: 5px;
   border: 1px solid $light-black;
@@ -29,11 +31,15 @@ select {
   width: auto;
   padding: 15px;
   padding-right: 30px;
-  background: url('assets/img/arrow-down.svg') no-repeat 90%;
+  background: url('/img/arrow-down.svg') no-repeat 90%;
   
   &:focus {
     //outline: 1px solid darken($green, 50%);
     outline: 0;
     background-color: rgba($green, 0.5);
   }
+}
+input,
+select {
+  @include font-family-default;
 }
