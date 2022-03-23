@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>Add a new word</h3>
+    <h3 class="h3">Add a new word</h3>
     <AddNewWord />
   </div>
 </template>
@@ -16,9 +16,3 @@ export default {
   }
 }
 </script>
-
-<style scoped lang="scss">
-h3 {
-  margin-bottom: 35px;
-}
-</style>

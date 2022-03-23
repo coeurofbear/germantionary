@@ -1,6 +1,7 @@
 <template>
   <div class="search-section">
     <div class="container">
+      <h3 class="h3">Search</h3>
       <SearchBar v-model="searchedWord" />
       <SearchResults :searchedWord="searchedWord" />
     </div>
@@ -27,7 +28,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import './src/assets/scss/variables';
 .search-section {
   background: #f6f6f6;
   padding: 3rem 0;

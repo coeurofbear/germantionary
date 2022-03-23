@@ -1,6 +1,6 @@
 <template>
   <div class="latest-added-words">
-    <h3>Latest added words: {{ words.length }}</h3>
+    <h3 class="h3">Latest added words: {{ words.length }}</h3>
     <br />
     <ul class="list">
       <Item v-for="(word, index) in words" :word="word" :key="index" date />
@@ -41,10 +41,8 @@ export default {
   }
 }
 </script>
+
 <style scoped lang="scss">
-h3 {
-  margin-bottom: 35px;
-}
 .latest-added-words {
   margin-top: 60px;
 }
