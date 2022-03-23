@@ -1,12 +1,12 @@
 <template>
-  <li :class="classes" @click="goToDetail(word.wordId)">
+  <li :class="classes" class="bar">
     <div class="left" :class="date ? 'inline' : ''">
-      <h3 class="main-word">
+      <h3 class="main-word" @click="goToDetail(word.wordId)">
         <div class="word">{{ word.word }}</div>
         /
         <div class="meaning">{{ word.meaning }}</div>
       </h3>
-      <div v-if="date" class="date">
+      <div v-if="date" class="date" @click="goToDetail(word.wordId)">
         Added in: <span>{{ dateFormat }}</span>
       </div>
     </div>
@@ -107,6 +107,7 @@ li {
 }
 .main-word {
   display: flex;
+  cursor: pointer;
 }
 .word {
   margin-right: 5px;
@@ -125,9 +126,14 @@ li {
     align-items: center;
   }
 }
-
+.bar {
+  &:hover {
+    background: #d7eee3 !important;
+  }
+}
 .date {
   font-size: 11px;
   margin-left: 30px;
+  cursor: pointer;
 }
 </style>
