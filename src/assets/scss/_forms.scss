@@ -33,8 +33,7 @@ select {
   width: auto;
   padding: 15px;
   padding-right: 30px;
-  background: url('/img/arrow-down.svg') no-repeat 90%;
-  background: #fafafa;
+  background: url('~@/assets/img/arrow-down.svg') no-repeat 90% #fafafa;
   
   &:focus {
     //outline: 1px solid darken($green, 50%);
