@@ -1,15 +1,28 @@
 <template>
   <div>
-    <h3 class="h3">{{ word.word }}</h3>
-    <p>{{ word.meaning }}</p>
+    <Date class="date" :wordDate="word.date.seconds" />
+    <div class="elements">
+      <Tag v-if="word.gender" :word="word.gender.charAt(0)" clear />
+      <Tag :word="word.type" />
+    </div>
+    <div class="text">
+      <h3 class="h3">{{ word.word }}</h3>
+      <p>{{ word.meaning }}</p>
+    </div>
   </div>
 </template>
 
 <script>
+import Tag from '@/components/item-elements/ItemTag.vue'
+import Date from '@/components/item-elements/ItemDate.vue'
 import { collection } from '@/main.js'
 
 export default {
   name: 'ItemDetailDisplay',
+  components: {
+    Tag,
+    Date
+  },
   data() {
     return {
       word: {}
@@ -41,17 +54,15 @@ export default {
             console.log(`Encountered error: ${err}`)
           }
         )
-      // collection.onSnapshot(colection => {
-      //   this.words = colection.docs.map(doc => {
-      //     return {
-      //       ...doc.data(),
-      //       wordId: doc.id
-      //     }
-      //   })
-      // })
     }
   }
 }
 </script>
-
-<style scoped lang="scss"></style>
+<style lang="scss" scoped>
+.text {
+  margin-top: 20px;
+}
+.date {
+  margin-bottom: 10px;
+}
+</style>

@@ -6,29 +6,38 @@
         /
         <div class="meaning">{{ word.meaning }}</div>
       </h3>
-      <div v-if="date" class="date" @click="goToDetail(word.wordId)">
-        Added in: <span>{{ dateFormat }}</span>
-      </div>
+      <Date
+        v-if="date"
+        :wordDate="word.date.seconds"
+        @click.native="goToDetail(word.wordId)"
+      />
     </div>
     <div class="elements">
-      <div v-if="word.gender" class="tag clear">
-        {{ word.gender.charAt(0) }}
+      <div class="elements">
+        <Tag v-if="word.gender" :word="word.gender.charAt(0)" clear />
+        <Tag :word="word.type" />
       </div>
-      <div class="tag" :class="typeOfWordColor">{{ word.type }}</div>
-      <div class="line"></div>
-      <div @click="deleteItem(word.wordId)" class="circle-icon yellow">
-        <img src="@/assets/img/delete.svg" alt="" />
+      <div class="elements">
+        <div class="line"></div>
+        <div @click="deleteItem(word.wordId)" class="circle-icon yellow">
+          <img src="@/assets/img/delete.svg" alt="" />
+        </div>
       </div>
     </div>
   </li>
 </template>
 
 <script>
+import Tag from '@/components/item-elements/ItemTag.vue'
+import Date from '@/components/item-elements/ItemDate.vue'
 import { collection } from '@/main.js'
 
 export default {
   name: 'Item',
-
+  components: {
+    Tag,
+    Date
+  },
   props: {
     date: {
       type: Boolean
@@ -45,22 +54,6 @@ export default {
     }
   },
   computed: {
-    dateFormat() {
-      return new Date(this.word.date.seconds * 1000).toLocaleString('en-GB', {
-        year: 'numeric',
-        month: 'numeric',
-        day: 'numeric'
-      })
-    },
-    typeOfWordColor() {
-      return {
-        green: this.word.type === 'noun',
-        blue: this.word.type === 'verb',
-        red: this.word.type === 'adjetive',
-        purple: this.word.type === 'adverb',
-        pink: this.word.type === 'article'
-      }
-    },
     classes() {
       return {
         search: this.search,
@@ -122,10 +115,6 @@ li {
   margin-left: 5px;
   font-weight: lighter;
 }
-.elements {
-  display: flex;
-  align-items: center;
-}
 .left {
   &.inline {
     display: flex;
@@ -137,8 +126,7 @@ li {
     background: #d7eee3 !important;
   }
 }
-.date {
-  font-size: 11px;
+::v-deep .date {
   margin-left: 30px;
   cursor: pointer;
 }

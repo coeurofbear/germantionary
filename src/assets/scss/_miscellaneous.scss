@@ -1,60 +1,17 @@
+.elements {
+  display: flex;
+  align-items: center;
+
+  *:last-child {
+    margin-right: 0;
+  }
+}
+
 .line {
   height: 35px;
   width: 1px;
   background: $black;
   margin: 0 15px;
-}
-.tag {
-  padding: 3px 12px;
-  font-size: 12px;
-  letter-spacing: 1px;
-  color: black;
-  text-transform: uppercase;
-  font-weight: bold;
-  border-radius: 5px;
-  margin-left: 7px;
-  cursor: pointer;
-  transition: ease .3s all;
-
-  &.green {
-    background: $green;
-    
-    &:hover {
-      background: darken($green, 10%);
-    }
-  }
-  &.blue {
-    background: $blue;
-    
-    &:hover {
-      background: darken($blue, 10%);
-    }
-  }
-  &.red {
-    background: $red;
-    
-    &:hover {
-      background: darken($red, 10%);
-    }
-  }
-  &.purple {
-    background: $purple;
-    
-    &:hover {
-      background: darken($purple, 10%);
-    }
-  }
-  &.pink {
-    background: $pink;
-    
-    &:hover {
-      background: darken($pink, 10%);
-    }
-  }
-  &.clear {
-    padding: 3px 5px;
-    border: 1px $black solid;
-  }
 }
 
 .circle-icon {
