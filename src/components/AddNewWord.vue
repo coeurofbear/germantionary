@@ -5,17 +5,23 @@
         v-model="word.word"
         required
         type="text"
-        class="word-input"
+        class="word-input margin-bottom-form"
         placeholder="Add a word"
       />
       <input
         v-model="word.meaning"
         required
         type="text"
-        class="word-input"
+        class="word-input margin-bottom-form"
         placeholder="Meaning"
       />
-      <select v-model="word.type" required name="type" id="type">
+      <select
+        v-model="word.type"
+        class="margin-bottom-form"
+        required
+        name="type"
+        id="type"
+      >
         <option disabled selected value>Type</option>
         <option
           v-for="(word, index) in typesOfWords"
@@ -25,13 +31,18 @@
           {{ capitalizeFirstLetter(word) }}
         </option>
       </select>
-      <select v-model="word.gender" name="gender" id="gender">
+      <select
+        v-model="word.gender"
+        class="margin-bottom-form"
+        name="gender"
+        id="gender"
+      >
         <option disabled selected value>Gender</option>
         <option v-for="(gender, index) in genders" :key="index" :value="gender">
           {{ capitalizeFirstLetter(gender) }}
         </option>
       </select>
-      <button class="circle-icon green">
+      <button class="circle-icon green margin-bottom-form">
         <img src="@/assets/img/plus.svg" alt="" />
       </button>
     </form>
@@ -98,6 +109,7 @@ export default {
 .add-word-wrapper {
   display: flex;
   align-items: flex-end;
+  width: 100%;
 
   input,
   select {
@@ -107,6 +119,9 @@ export default {
   .circle-icon {
     align-self: center;
   }
+}
+.margin-bottom-form {
+  margin-bottom: 15px;
 }
 .success {
   margin-top: 10px;
