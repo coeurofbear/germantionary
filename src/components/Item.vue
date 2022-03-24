@@ -69,10 +69,15 @@ export default {
     }
   },
   methods: {
-    deleteItem(id) {
+    async deleteItem(id) {
       const itemToDelete = collection.doc(id)
-      alert(`Document ${id} was successfully deleted!`)
-      itemToDelete.delete()
+      const itemObject = await itemToDelete.get().then(item => item.data())
+      const deleteItem = confirm(
+        `Please confirm that you want to delete '${itemObject.word}'`
+      )
+      if (deleteItem) {
+        itemToDelete.delete()
+      }
     },
     goToDetail(wordId) {
       if (this.$route.params.id !== wordId) {
@@ -86,6 +91,7 @@ export default {
 <style scoped lang="scss">
 li {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   padding: 6px 20px;
