@@ -3,8 +3,16 @@
     <h3 class="h3">Latest added words: {{ words.length }}</h3>
     <br />
     <ul class="list">
-      <Item v-for="(word, index) in words" :word="word" :key="index" date />
+      <Item
+        v-for="(word, index) in words.slice(0, 10)"
+        :word="word"
+        :key="index"
+        date
+      />
     </ul>
+    <div v-if="words.length > 10">
+      see more
+    </div>
   </div>
 </template>
 
