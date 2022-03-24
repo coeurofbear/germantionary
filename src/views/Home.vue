@@ -4,7 +4,7 @@
       <div class="col-12">
         <AddWordsSection />
       </div>
-      <div class="col-12 col-lg-6">
+      <div class="col-12 col-xl-6">
         <LatestAddedSection />
       </div>
       <!-- <div class="col-12 col-lg-5 offset-lg-1">

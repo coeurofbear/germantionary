@@ -42,6 +42,9 @@ export default {
   watch: {
     searchedWord() {
       this.filterData(this.searchedWord)
+    },
+    words() {
+      this.filterData(this.searchedWord)
     }
   },
   mounted() {
