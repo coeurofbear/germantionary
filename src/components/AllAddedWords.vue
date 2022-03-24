@@ -1,23 +1,29 @@
 <template>
-  <div class="latest-added-words">
-    <h3 class="h3">Latest added words: {{ words.length }}</h3>
-    <br />
-    <AllAddedWords :itemsToShow="10" />
-    <div class="button" v-if="words.length > 10">
-      <router-link class="link" to="/all-words">See all</router-link>
-    </div>
-  </div>
+  <ul class="list">
+    <Item
+      v-for="(word, index) in words.slice(0, itemsToShow)"
+      :word="word"
+      :key="index"
+      date
+    />
+  </ul>
 </template>
 
 <script>
-import AllAddedWords from '@/components/AllAddedWords.vue'
+import Item from '@/components/Item.vue'
 import { collection } from '@/main.js'
 
 export default {
   name: 'LatestAddedSection',
 
+  props: {
+    itemsToShow: {
+      type: Number,
+      default: 999999
+    }
+  },
   components: {
-    AllAddedWords
+    Item
   },
 
   data() {
@@ -46,10 +52,5 @@ export default {
 <style scoped lang="scss">
 .latest-added-words {
   margin-top: 60px;
-}
-.button {
-  margin-top: 20px;
-  display: flex;
-  justify-content: flex-end;
 }
 </style>
