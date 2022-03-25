@@ -6,11 +6,11 @@
 
 <script>
 export default {
-  name: 'Item Date',
+  name: 'ItemDate',
   props: {
     wordDate: {
-      type: String,
-      default: ''
+      type: Number,
+      default: null
     }
   },
   computed: {

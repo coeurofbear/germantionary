@@ -1,9 +1,9 @@
 <template>
   <div>
-    <Date class="date" :wordDate="word.date.seconds" />
+    <!-- <ItemDate class="date" :wordDate="word.date.seconds" /> -->
     <div class="elements">
-      <Tag v-if="word.gender" :word="word.gender.charAt(0)" clear />
-      <Tag :word="word.type" />
+      <ItemTag v-if="word.gender" :word="word.gender.charAt(0)" clear />
+      <ItemTag :word="word.type" />
     </div>
     <div class="text">
       <h3 class="h3">{{ word.word }}</h3>
@@ -13,15 +13,15 @@
 </template>
 
 <script>
-import Tag from '@/components/item-elements/ItemTag.vue'
-import Date from '@/components/item-elements/ItemDate.vue'
+import ItemTag from '@/components/item-elements/ItemTag.vue'
+// import ItemDate from '@/components/item-elements/ItemDate.vue'
 import { collection } from '@/main.js'
 
 export default {
   name: 'ItemDetailDisplay',
   components: {
-    Tag,
-    Date
+    ItemTag
+    // ItemDate
   },
   data() {
     return {
@@ -46,14 +46,9 @@ export default {
       collection
         .doc(id)
         .get()
-        .then(
-          item => {
-            this.word = item.data()
-          },
-          err => {
-            console.log(`Encountered error: ${err}`)
-          }
-        )
+        .then(doc => {
+          this.word = doc.data()
+        })
     }
   }
 }

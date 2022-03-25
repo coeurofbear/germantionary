@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'Item Tag',
+  name: 'ItemTag',
   props: {
     word: {
       type: String,
