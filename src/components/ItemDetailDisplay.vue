@@ -1,5 +1,8 @@
 <template>
   <div v-if="seconds" class="wrapper">
+    <div class="circle-icon yellow">
+      <img src="@/assets/img/edit.svg" alt="" />
+    </div>
     <ItemDate class="date" :wordDate="seconds" />
     <div class="elements">
       <ItemTag v-if="word.gender" :word="word.gender.charAt(0)" clear />
@@ -12,7 +15,7 @@
     <div class="notas">
       <span
         >Notas:
-        <input type="text" class="search-bar" />
+        <!-- <input type="text" class="search-bar" /> -->
       </span>
     </div>
   </div>
@@ -76,11 +79,21 @@ export default {
   background: #f6f6f6;
   padding: 20px;
   border-radius: 5px;
+  position: relative;
+  transition: all ease 0.3s;
+  &:hover {
+    background: darken(#f6f6f6, 2%);
+  }
 }
 .notas {
   margin-top: 20px;
 }
 .search-bar {
   margin-top: 20px;
+}
+.circle-icon {
+  position: absolute;
+  right: 15px;
+  top: 15px;
 }
 </style>
