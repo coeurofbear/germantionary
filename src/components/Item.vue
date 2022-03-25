@@ -75,7 +75,7 @@ export default {
     },
     goToDetail(wordId) {
       if (this.$route.params.id !== wordId) {
-        this.$router.push(`/detail/${wordId}`)
+        this.$router.push(`/words/${wordId}`)
       }
     }
   }

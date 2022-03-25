@@ -4,7 +4,7 @@
     <br />
     <AllAddedWords :itemsToShow="10" />
     <div class="button" v-if="words.length > 10">
-      <router-link class="link" to="/all-words">See all</router-link>
+      <router-link class="link" to="/words">See all</router-link>
     </div>
   </div>
 </template>
