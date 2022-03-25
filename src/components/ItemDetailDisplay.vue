@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <ItemDate class="date" :wordDate="word.date.seconds" /> -->
+    <ItemDate class="date" v-if="dateInfo" :wordDate="dateInfo" />
     <div class="elements">
       <ItemTag v-if="word.gender" :word="word.gender.charAt(0)" clear />
       <ItemTag :word="word.type" />
@@ -14,14 +14,14 @@
 
 <script>
 import ItemTag from '@/components/item-elements/ItemTag.vue'
-// import ItemDate from '@/components/item-elements/ItemDate.vue'
+import ItemDate from '@/components/item-elements/ItemDate.vue'
 import { collection } from '@/main.js'
 
 export default {
   name: 'ItemDetailDisplay',
   components: {
-    ItemTag
-    // ItemDate
+    ItemTag,
+    ItemDate
   },
   data() {
     return {
@@ -36,6 +36,9 @@ export default {
   computed: {
     wordIdPath() {
       return this.$route.params.id
+    },
+    dateInfo() {
+      return this.word?.date?.seconds
     }
   },
   mounted() {
