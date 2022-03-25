@@ -3,15 +3,19 @@
     <div class="circle-icon yellow">
       <img src="@/assets/img/edit.svg" alt="" />
     </div>
+    <div class="circle-icon red">
+      <img src="@/assets/img/delete.svg" alt="" />
+    </div>
     <ItemDate class="date" :wordDate="seconds" />
     <div class="elements">
       <ItemTag v-if="word.gender" :word="word.gender.charAt(0)" clear />
       <ItemTag :word="word.type" />
     </div>
     <div class="text">
-      <h3 class="h3">{{ word.word }}</h3>
+      <h3 class="title">{{ word.word }}</h3>
       <p>{{ __capitalizeFirstLetter(meaning) }}</p>
     </div>
+    <div class="line vertical"></div>
     <div class="notas">
       <span
         >Notas:
@@ -69,6 +73,9 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.title {
+  margin-bottom: 15px;
+}
 .text {
   margin-top: 20px;
 }
@@ -93,7 +100,14 @@ export default {
 }
 .circle-icon {
   position: absolute;
-  right: 15px;
-  top: 15px;
+
+  &.yellow {
+    right: 15px;
+    top: 15px;
+  }
+  &.red {
+    right: 15px;
+    top: 60px;
+  }
 }
 </style>

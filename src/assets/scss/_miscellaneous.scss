@@ -12,9 +12,16 @@
   width: 1px;
   background: $black;
   margin: 0 15px;
+  
+  &.vertical {
+    height: 1px;
+    width: 100%;
+    margin: 20px 0 10px;
+  }
 }
 
 .circle-icon {
+  box-shadow: 3px 3px 4px #c0c0c0;
   display: flex;
   justify-content: center;
   align-items: center;

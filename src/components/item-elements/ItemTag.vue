@@ -34,6 +34,7 @@ export default {
 @import './src/assets/scss/variables';
 
 .tag {
+  box-shadow: 3px 3px 4px #c0c0c0;
   padding: 3px 12px;
   font-size: 12px;
   letter-spacing: 1px;
