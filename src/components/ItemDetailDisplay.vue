@@ -1,13 +1,19 @@
 <template>
-  <div>
-    <ItemDate class="date" v-if="dateInfo" :wordDate="dateInfo" />
+  <div v-if="seconds" class="wrapper">
+    <ItemDate class="date" :wordDate="seconds" />
     <div class="elements">
       <ItemTag v-if="word.gender" :word="word.gender.charAt(0)" clear />
       <ItemTag :word="word.type" />
     </div>
     <div class="text">
       <h3 class="h3">{{ word.word }}</h3>
-      <p>{{ word.meaning }}</p>
+      <p>{{ __capitalizeFirstLetter(meaning) }}</p>
+    </div>
+    <div class="notas">
+      <span
+        >Notas:
+        <input type="text" class="search-bar" />
+      </span>
     </div>
   </div>
 </template>
@@ -15,6 +21,7 @@
 <script>
 import ItemTag from '@/components/item-elements/ItemTag.vue'
 import ItemDate from '@/components/item-elements/ItemDate.vue'
+import helper from '@/mixins/helpers.js'
 import { collection } from '@/main.js'
 
 export default {
@@ -23,35 +30,37 @@ export default {
     ItemTag,
     ItemDate
   },
+  mixins: [helper],
   data() {
     return {
-      word: {}
+      word: {},
+      meaning: '',
+      seconds: null
     }
   },
   watch: {
-    wordIdPath() {
-      this.getItem(this.wordIdPath)
+    async wordIdPath() {
+      this.word = await this.getItem()
+      this.meaning = await this.word.meaning
+      this.seconds = await this.word.date.seconds
     }
   },
   computed: {
     wordIdPath() {
       return this.$route.params.id
-    },
-    dateInfo() {
-      return this.word?.date?.seconds
     }
   },
-  mounted() {
-    this.getItem(this.wordIdPath)
+  async mounted() {
+    this.word = await this.getItem()
+    this.meaning = await this.word.meaning
+    this.seconds = await this.word.date.seconds
   },
   methods: {
-    getItem(id) {
-      collection
-        .doc(id)
+    getItem() {
+      return collection
+        .doc(this.wordIdPath)
         .get()
-        .then(doc => {
-          this.word = doc.data()
-        })
+        .then(data => data.data())
     }
   }
 }
@@ -62,5 +71,16 @@ export default {
 }
 .date {
   margin-bottom: 10px;
+}
+.wrapper {
+  background: #f6f6f6;
+  padding: 20px;
+  border-radius: 5px;
+}
+.notas {
+  margin-top: 20px;
+}
+.search-bar {
+  margin-top: 20px;
 }
 </style>

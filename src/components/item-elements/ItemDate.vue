@@ -1,6 +1,6 @@
 <template>
   <div class="date">
-    Added in: <span>{{ dateFormat }}</span>
+    <slot /><span>{{ dateFormat }}</span>
   </div>
 </template>
 

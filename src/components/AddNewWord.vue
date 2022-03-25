@@ -28,7 +28,7 @@
           :key="index"
           :value="word"
         >
-          {{ capitalizeFirstLetter(word) }}
+          {{ __capitalizeFirstLetter(word) }}
         </option>
       </select>
       <select
@@ -39,7 +39,7 @@
       >
         <option disabled selected value>Gender</option>
         <option v-for="(gender, index) in genders" :key="index" :value="gender">
-          {{ capitalizeFirstLetter(gender) }}
+          {{ __capitalizeFirstLetter(gender) }}
         </option>
       </select>
       <button class="circle-icon green margin-bottom-form">
@@ -57,9 +57,11 @@
 
 <script>
 import { collection } from '@/main.js'
+import helper from '@/mixins/helpers.js'
 
 export default {
   name: 'AddNewWord',
+  mixins: [helper],
   data() {
     return {
       errors: [],
@@ -94,10 +96,6 @@ export default {
       setTimeout(() => {
         this.success = null
       }, 4000)
-    },
-
-    capitalizeFirstLetter(word) {
-      return word.charAt(0).toUpperCase() + word.slice(1)
     }
   }
 }

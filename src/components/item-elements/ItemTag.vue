@@ -31,7 +31,7 @@ export default {
 }
 </script>
 <style scoped lang="scss">
-@import './src/assets/scss/main';
+@import './src/assets/scss/variables';
 
 .tag {
   padding: 3px 12px;
