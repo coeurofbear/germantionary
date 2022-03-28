@@ -55,8 +55,8 @@ export default {
   mounted() {
     this.__getCurrentUserObject()
     this.__getCurrentSignedInUser()
-    console.log(this.userObject)
-    console.log(this.__getCurrentSignedInUser())
+    // console.log(this.userObject)
+    // console.log(this.__getCurrentSignedInUser())
   }
 }
 </script>

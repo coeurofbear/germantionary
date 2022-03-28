@@ -47,7 +47,7 @@ export default {
           userCredential => {
             this.response = userCredential
             alert('your are signed in' + this.response.user)
-            console.log(this.response.user)
+            // console.log(this.response.user)
           },
           function(err) {
             console.error(err)
