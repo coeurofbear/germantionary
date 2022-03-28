@@ -5,8 +5,12 @@
         <div class="login">
           <h3>Login</h3>
           <div>
-            <input v-model="email" type="text" placeholder="User" />
-            <input v-model="password" type="password" placeholder="Password" />
+            <input v-model="user.email" type="email" placeholder="Mail" />
+            <input
+              v-model="user.password"
+              type="password"
+              placeholder="Password"
+            />
             <button @click="login">Login</button>
             <p>
               If you don't have an account you can create one
@@ -20,16 +24,35 @@
 </template>
 
 <script>
+import firebase from 'firebase'
+
 export default {
-  methods: {
-    login() {
-      this.$router.replace('/')
-    }
-  },
   data() {
     return {
-      email: '',
-      password: ''
+      user: {
+        email: '',
+        password: ''
+      }
+    }
+  },
+  methods: {
+    goToIndex() {
+      this.$router.push('/')
+    },
+    login() {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(this.user.email, this.user.password)
+        .then(
+          userCredential => {
+            this.response = userCredential
+            alert('your are signed in' + this.response.user)
+            console.log(this.response.user)
+          },
+          function(err) {
+            console.error(err)
+          }
+        )
     }
   }
 }

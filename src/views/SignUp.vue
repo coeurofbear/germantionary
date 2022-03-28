@@ -5,13 +5,19 @@
         <div class="login">
           <h3>Sign up</h3>
           <div>
-            <input v-model="email" type="text" placeholder="User" />
-            <input v-model="password" type="password" placeholder="Password" />
+            <input v-model="user.name" type="text" placeholder="Name" />
+            <input v-model="user.email" type="email" placeholder="User" />
+            <input
+              v-model="user.password"
+              type="password"
+              placeholder="Password"
+            />
             <button @click="signup">Sign up</button>
             <p>
               Have already an account?
               <router-link to="/login">Login</router-link>
             </p>
+            <div>{{ update }}</div>
           </div>
         </div>
       </div>
@@ -25,20 +31,39 @@ import firebase from 'firebase'
 export default {
   data() {
     return {
-      email: '',
-      password: ''
+      user: {
+        name: '',
+        email: '',
+        password: ''
+      },
+      update: null
     }
   },
+  // coeurofbear+5@gmail.com
   methods: {
     signup() {
       firebase
         .auth()
-        .createUserWithEmailAndPassword(this.email, this.password)
+        .createUserWithEmailAndPassword(this.user.email, this.user.password)
         .then(
-          function(user) {
-            alert('your account has been created' + user)
+          userCredential => {
+            alert('your account has been created' + userCredential.user)
+            var currentUser = firebase.auth().currentUser
+            currentUser
+              .updateProfile({
+                displayName: this.user.name
+              })
+              .then(
+                e => {
+                  alert('updated profile' + e)
+                  this.update = e
+                },
+                e => {
+                  console.log(e)
+                }
+              )
           },
-          function(err) {
+          err => {
             console.error(err)
           }
         )
