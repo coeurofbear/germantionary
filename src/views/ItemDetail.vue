@@ -1,10 +1,10 @@
 <template>
   <div class="container">
     <div class="buttons">
-      <div @click="goToPrevious('left')">antes</div>
+      <div @click="goToPrevious('back')">antes</div>
       <br />
       <br />
-      <div @click="goToPrevious('right')">despues</div>
+      <div @click="goToPrevious('next')">despues</div>
     </div>
 
     <div class="row">
@@ -41,19 +41,31 @@ export default {
       })
     },
     goToPrevious(direction) {
-      if (this.getIndex === 0 || this.wordsIdArray.length === this.getIndex) {
-        if (this.getIndex !== -1 && direction === 'left') {
-          this.$router.push(this.wordsIdArray[this.getIndex - 1])
-        }
-        if (this.getIndex !== -1 && direction === 'right') {
-          this.$router.push(this.wordsIdArray[this.getIndex + 1])
-        }
+      if (
+        this.getIndex !== -1 &&
+        direction === 'back' &&
+        !this.hasNoMoreItemsLeft
+      ) {
+        this.$router.push(this.wordsIdArray[this.getIndex - 1])
+      }
+      if (
+        this.getIndex !== -1 &&
+        direction === 'next' &&
+        !this.hasNoMoreItemsRight
+      ) {
+        this.$router.push(this.wordsIdArray[this.getIndex + 1])
       }
     }
   },
   computed: {
     getIndex() {
       return this.wordsIdArray.indexOf(this.$route.params.id)
+    },
+    hasNoMoreItemsLeft() {
+      return this.getIndex === 0
+    },
+    hasNoMoreItemsRight() {
+      return this.wordsIdArray.length === this.getIndex + 1
     }
   },
   mounted() {
