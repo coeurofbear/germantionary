@@ -57,6 +57,13 @@
       background: darken($red-delete, 10%);
     }
   }
+  &.invalid {
+    background: #e0e0e0;
+    cursor: text;
+    &:hover {
+      background: #e0e0e0;
+    }
+  }
 }
 
 h3.h3 {
