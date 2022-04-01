@@ -5,12 +5,12 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    // wordIds: []
+    wordId: null
   },
   mutations: {
-    // setWordIds(state, arr) {
-    //   state.wordIds = arr
-    // }
+    setWordId(state, arr) {
+      state.wordId = arr
+    }
   },
   actions: {},
   modules: {}

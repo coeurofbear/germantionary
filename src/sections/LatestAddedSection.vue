@@ -1,5 +1,5 @@
 <template>
-  <div class="latest-added-words">
+  <div>
     <h3 class="h3">Latest added words: {{ words.length }}</h3>
     <br />
     <AllAddedWords :itemsToShow="10" />
@@ -44,9 +44,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.latest-added-words {
-  margin-top: 60px;
-}
 .button {
   margin-top: 20px;
   display: flex;

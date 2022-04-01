@@ -1,11 +1,5 @@
 <template>
   <div v-if="true" class="wrapper">
-    <!-- <div class="circle-icon yellow">
-      <img src="@/assets/img/edit.svg" alt="" />
-    </div>
-    <div class="circle-icon red">
-      <img src="@/assets/img/delete.svg" alt="" />
-    </div> -->
     <ItemDate class="date" :wordDate="seconds" />
     <h1 class="title bold">{{ word.word }}</h1>
     <div class="elements">
@@ -40,8 +34,6 @@ import ItemTag from '@/components/item-elements/ItemTag.vue'
 import ItemDate from '@/components/item-elements/ItemDate.vue'
 import helper from '@/mixins/helpers.js'
 import { collection } from '@/main.js'
-// import words from '@/words/words.js'
-// import _ from 'lodash'
 
 export default {
   name: 'ItemDetailDisplay',
@@ -52,29 +44,33 @@ export default {
   mixins: [helper],
   data() {
     return {
-      word: {},
+      word: '',
       meaning: '',
       seconds: null
     }
   },
+  props: {
+    wordId: {
+      type: String,
+      default: null
+    }
+  },
   watch: {
     async wordIdPath() {
-      // this.getItemTwo() // TBD
       this.word = await this.getItem()
       this.meaning = await this.word.meaning
-      this.seconds = await this.word.date.seconds
+      this.seconds = await this.word.seconds
     }
   },
   computed: {
     wordIdPath() {
-      return this.$route.params.id
+      return this.wordId
     }
   },
   async mounted() {
-    // this.getItemTwo() // TBD
     this.word = await this.getItem()
     this.meaning = await this.word.meaning
-    this.seconds = await this.word.date.seconds
+    this.seconds = await this.word.seconds
   },
   methods: {
     getItem() {
@@ -83,15 +79,6 @@ export default {
         .get()
         .then(data => data.data())
     }
-    // getItemTwo() {
-    //   // TBD
-    //   const filteredWord = _.filter(words, word => {
-    //     return word.wordId === this.wordIdPath
-    //   })
-    //   this.word = filteredWord[0]
-    //   this.meaning = filteredWord[0].meaning
-    //   this.seconds = filteredWord[0].date
-    // }
   }
 }
 </script>

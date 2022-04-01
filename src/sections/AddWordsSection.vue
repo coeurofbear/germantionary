@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="add-word-section">
     <h3 class="h3">Add a new word</h3>
     <AddNewWord />
   </div>
@@ -16,3 +16,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.add-word-section {
+  margin-bottom: 60px;
+}
+</style>

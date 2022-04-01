@@ -1,11 +1,15 @@
 <template>
-  <li :class="classes" class="bar">
+  <li
+    :class="classes"
+    class="bar"
+    @click="$store.commit('setWordId', word.wordId)"
+  >
     <div class="left" :class="date ? 'inline' : ''">
-      <h3 class="main-word" @click="goToDetail(word.wordId)">
+      <div class="main-word" @click="goToDetail(word.wordId)">
         <div class="word">{{ word.word }}</div>
         /
         <div class="meaning">{{ word.meaning }}</div>
-      </h3>
+      </div>
       <Date
         v-if="date"
         :wordDate="word.date.seconds"
@@ -106,6 +110,9 @@ li {
   }
 }
 .main-word {
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
   display: flex;
   cursor: pointer;
 }

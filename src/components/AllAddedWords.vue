@@ -12,6 +12,7 @@
 <script>
 import Item from '@/components/Item.vue'
 import { collection } from '@/main.js'
+// import words from '@/words/words.js'
 
 export default {
   name: 'LatestAddedSection',
@@ -45,6 +46,7 @@ export default {
   },
   mounted() {
     this.getData()
+    // this.words = words
   }
 }
 </script>

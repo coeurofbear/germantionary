@@ -1,17 +1,27 @@
 <template>
   <div class="container">
-    <div class="buttons">
-      <div @click="goToPrevious('back')">antes</div>
-      <br />
-      <br />
-      <div @click="goToPrevious('next')">despues</div>
-    </div>
-
+    <GoBackButton />
     <div class="row">
-      <div
-        class="col-12 offset-lg-3 col-lg-6 offset-sm-1 col-sm-10 offset-md-2 col-md-8 offset-xl-4 col-xl-4"
-      >
+      <div class="col-sm-1 col-md-2 col-lg-3 col-xl-4 buttons">
+        <div
+          @click="goToPrevious('back')"
+          class="circle-icon green"
+          :class="{ invalid: hasNoMoreItemsLeft }"
+        >
+          <img src="@/assets/img/arrow-left.svg" alt="" />
+        </div>
+      </div>
+      <div class="col-12 col-lg-6 col-sm-10 col-md-8 col-xl-4">
         <ItemDetailDisplay />
+      </div>
+      <div class="col-sm-1 col-md-2 col-lg-3 col-xl-4 buttons">
+        <div
+          @click="goToPrevious('next')"
+          class="circle-icon green"
+          :class="{ invalid: hasNoMoreItemsRight }"
+        >
+          <img src="@/assets/img/arrow-right.svg" alt="" />
+        </div>
       </div>
     </div>
   </div>
@@ -19,17 +29,21 @@
 
 <script>
 import ItemDetailDisplay from '@/components/ItemDetailDisplay.vue'
+import GoBackButton from '@/components/GoBackButton.vue'
 import { collection } from '@/main.js'
+// import words from '@/words/words.js'
 // @ is an alias to /src
 
 export default {
   name: 'Detail',
   components: {
-    ItemDetailDisplay
+    ItemDetailDisplay,
+    GoBackButton
   },
   data() {
     return {
-      wordsIdArray: []
+      wordsIdArray: [],
+      invalid: false
     }
   },
   methods: {
@@ -39,6 +53,9 @@ export default {
           return doc.id
         })
       })
+      // words.forEach(word => {
+      //   this.wordsIdArray.push(word.wordId)
+      // })
     },
     goToPrevious(direction) {
       if (
@@ -73,9 +90,11 @@ export default {
   }
 }
 </script>
+
 <style lang="scss" scoped>
 .buttons {
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
 }
 </style>
