@@ -48,37 +48,47 @@ export default {
 
   &.green {
     background: $green;
+    border: 1px $green solid;
 
     &:hover {
       background: darken($green, 10%);
+      border: 1px darken($green, 10%) solid;
     }
   }
   &.blue {
     background: $blue;
+    border: 1px $blue solid;
 
     &:hover {
       background: darken($blue, 10%);
+      border: 1px darken($blue, 10%) solid;
     }
   }
   &.red {
     background: $red;
+    border: 1px $red solid;
 
     &:hover {
       background: darken($red, 10%);
+      border: 1px darken($red, 10%) solid;
     }
   }
   &.purple {
     background: $purple;
+    border: 1px $purple solid;
 
     &:hover {
       background: darken($purple, 10%);
+      border: 1px darken($purple, 10%) solid;
     }
   }
   &.pink {
     background: $pink;
+    border: 1px $pink solid;
 
     &:hover {
       background: darken($pink, 10%);
+      border: 1px darken($pink, 10%) solid;
     }
   }
   &.clear {

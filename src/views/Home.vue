@@ -24,7 +24,7 @@
         <LatestAddedSection />
       </div>
       <div class="col-12 col-lg-5 offset-lg-1">
-        <ItemFullDisplay v-if="itemSelected" :wordId="wordId" />
+        <ItemDetailDisplay v-if="itemSelected" :wordId="wordId" />
         <!-- <h1>Welcome to Germantionary</h1> -->
       </div>
     </div>
@@ -35,7 +35,7 @@
 import AddWordsSection from '@/sections/AddWordsSection.vue'
 import LatestAddedSection from '@/sections/LatestAddedSection.vue'
 import userMethods from '@/mixins/user.js'
-import ItemFullDisplay from '@/components/ItemFullDisplay.vue'
+import ItemDetailDisplay from '@/components/ItemDetailDisplay.vue'
 
 // @ is an alias to /rc
 
@@ -44,7 +44,7 @@ export default {
   components: {
     AddWordsSection,
     LatestAddedSection,
-    ItemFullDisplay
+    ItemDetailDisplay
   },
   mixins: [userMethods],
   data() {

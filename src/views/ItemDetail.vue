@@ -12,7 +12,7 @@
         </div>
       </div>
       <div class="col-12 col-lg-6 col-sm-10 col-md-8 col-xl-4">
-        <ItemDetailDisplay />
+        <ItemDetailDisplay bg />
       </div>
       <div class="col-sm-1 col-md-2 col-lg-3 col-xl-4 buttons">
         <div

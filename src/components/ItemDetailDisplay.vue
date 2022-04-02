@@ -1,5 +1,5 @@
 <template>
-  <div v-if="true" class="wrapper">
+  <div v-if="true" class="wrapper" :class="{ 'with-background': bg }">
     <!-- <div class="circle-icon yellow">
       <img src="@/assets/img/edit.svg" alt="" />
     </div>
@@ -57,9 +57,18 @@ export default {
       seconds: null
     }
   },
+  props: {
+    wordId: {
+      type: String,
+      default: null
+    },
+    bg: {
+      type: Boolean,
+      default: false
+    }
+  },
   watch: {
     async wordIdPath() {
-      // this.getItemTwo() // TBD
       this.word = await this.getItem()
       this.meaning = await this.word.meaning
       this.seconds = await this.word.date.seconds
@@ -67,11 +76,10 @@ export default {
   },
   computed: {
     wordIdPath() {
-      return this.$route.params.id
+      return this.$route.params.id || this.wordId
     }
   },
   async mounted() {
-    // this.getItemTwo() // TBD
     this.word = await this.getItem()
     this.meaning = await this.word.meaning
     this.seconds = await this.word.date.seconds
@@ -111,13 +119,17 @@ export default {
   margin-bottom: 10px;
 }
 .wrapper {
-  background: #f6f6f6;
-  padding: 20px;
-  border-radius: 5px;
   position: relative;
   transition: all ease 0.3s;
-  &:hover {
-    background: darken(#f6f6f6, 2%);
+
+  &.with-background {
+    border-radius: 5px;
+    background: #f6f6f6;
+    padding: 20px;
+
+    &:hover {
+      background: darken(#f6f6f6, 2%);
+    }
   }
 }
 .notas {
