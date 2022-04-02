@@ -5,17 +5,28 @@
         <div class="login">
           <h3>Sign up</h3>
           <div>
-            <input v-model="user.name" type="text" placeholder="Name" />
-            <input v-model="user.email" type="email" placeholder="User" />
             <input
+              class="input"
+              v-model="user.name"
+              type="text"
+              placeholder="Name"
+            />
+            <input
+              class="input"
+              v-model="user.email"
+              type="email"
+              placeholder="User"
+            />
+            <input
+              class="input"
               v-model="user.password"
               type="password"
               placeholder="Password"
             />
-            <button @click="signup">Sign up</button>
-            <p>
+            <button class="btn" @click="signup">Sign up</button>
+            <p class="small-text">
               Have already an account?
-              <router-link to="/login">Login</router-link>
+              <router-link class="link" to="/login">Login</router-link>
             </p>
             <div>{{ update }}</div>
           </div>

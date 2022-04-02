@@ -1,12 +1,19 @@
 <template>
   <div class="container">
+    <!-- <div v-if="true" class="row"> -->
     <div v-if="!user.uid" class="row">
-      <div class="col-12">
-        <h1>inicie sesion</h1>
+      <div
+        class="col-12 col-sm-10 offset-sm-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4"
+      >
+        <h1>Please log in</h1>
+        <p class="small-text">
+          In order to use Germantionary, you'll need to log in or create an
+          account
+        </p>
         <br />
-        <router-link to="/login">Aca</router-link>
+        <router-link class="link" to="/login">Here</router-link>
         <br />
-        <h2>User: {{ userObject }}</h2>
+        <!-- <h2>User: {{ userObject }}</h2> -->
         <br />
         <br />
       </div>
