@@ -4,7 +4,7 @@
       v-for="(word, index) in words.slice(0, itemsToShow)"
       :word="word"
       :key="index"
-      date
+      :date="date"
     />
   </ul>
 </template>
@@ -21,6 +21,10 @@ export default {
     itemsToShow: {
       type: Number,
       default: 999999
+    },
+    date: {
+      type: Boolean,
+      default: false
     }
   },
   components: {

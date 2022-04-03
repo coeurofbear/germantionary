@@ -3,7 +3,7 @@
     <GoBackButton />
     <div class="row">
       <div class="col-12">
-        <AllAddedWords />
+        <AllAddedWords date />
       </div>
     </div>
   </div>
