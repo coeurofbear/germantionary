@@ -6,7 +6,7 @@
       >
         <div class="login">
           <h3>Login</h3>
-          <div>
+          <form @submit.prevent="login">
             <input
               class="input"
               v-model="user.email"
@@ -19,12 +19,12 @@
               type="password"
               placeholder="Password"
             />
-            <button class="btn" @click="login">Login</button>
+            <input class="btn" type="submit" placeholder="Login" />
             <p class="small-text">
               If you don't have an account you can create one
-              <router-link class="link" to="/signup">here</router-link>
+              <router-link class="link" to="/signup">here</router-link>.
             </p>
-          </div>
+          </form>
         </div>
       </div>
     </div>
@@ -40,7 +40,8 @@ export default {
       user: {
         email: '',
         password: ''
-      }
+      },
+      response: null
     }
   },
   methods: {
@@ -54,8 +55,8 @@ export default {
         .then(
           userCredential => {
             this.response = userCredential
-            alert('your are signed in' + this.response.user)
-            // console.log(this.response.user)
+            alert('You are signed in, ' + this.response.user.displayName)
+            this.goToIndex()
           },
           function(err) {
             console.error(err)

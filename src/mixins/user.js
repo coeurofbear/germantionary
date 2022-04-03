@@ -4,11 +4,13 @@ export default {
   methods: {
     __getCurrentSignedInUser() {
       firebase.auth().onAuthStateChanged(user => {
-        this.user.uid = user.uid
+        this.user = user
       })
     },
     __getCurrentUserObject() {
-      return firebase.auth().currentUser
+      firebase.auth().onAuthStateChanged(user => {
+        this.userObject = user
+      })
     },
     __logout() {
       firebase

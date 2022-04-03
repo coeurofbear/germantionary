@@ -3,8 +3,8 @@
     <div class="container ">
       <div class="links">
         <router-link to="/"><h1>Germantionary</h1></router-link>
-        <div>
-          <span class="white">Hi, {{ userObject }}, </span>
+        <div v-if="userObject">
+          <span class="white">Hi, {{ userObject.displayName }}, </span>
           <span @click="__logout" class="link white">Logout</span>
         </div>
       </div>
@@ -20,19 +20,11 @@ export default {
   mixins: [userMethods],
   data() {
     return {
-      userObject: {}
+      userObject: null
     }
   },
-  // computed: {
-  //   userObject() {
-  //     return this.__getCurrentUserObject()
-  //   }
-  // }
-  async mounted() {
-    this.userObject = await this.__getCurrentUserObject()
-    // this.__getCurrentUserObject().then(e => {
-    //   this.userObject = e
-    // })
+  mounted() {
+    this.__getCurrentUserObject()
   }
 }
 </script>

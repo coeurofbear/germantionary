@@ -1,10 +1,12 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-4 offset-4">
+      <div
+        class="col-12 col-sm-10 offset-sm-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4"
+      >
         <div class="login">
           <h3>Sign up</h3>
-          <div>
+          <form @submit.prevent="signup">
             <input
               class="input"
               v-model="user.name"
@@ -15,7 +17,7 @@
               class="input"
               v-model="user.email"
               type="email"
-              placeholder="User"
+              placeholder="Email"
             />
             <input
               class="input"
@@ -23,13 +25,15 @@
               type="password"
               placeholder="Password"
             />
-            <button class="btn" @click="signup">Sign up</button>
+            <input class="btn" type="submit" placeholder="Sign up" />
             <p class="small-text">
               Have already an account?
               <router-link class="link" to="/login">Login</router-link>
             </p>
-            <div>{{ update }}</div>
-          </div>
+            <div>update: {{ update }}</div>
+            <div>response: {{ response }}</div>
+            <div>updatedUser: {{ updatedUser }}</div>
+          </form>
         </div>
       </div>
     </div>
@@ -47,35 +51,38 @@ export default {
         email: '',
         password: ''
       },
-      update: null
+      response: null,
+      update: null,
+      updatedUser: null
     }
   },
   // coeurofbear+5@gmail.com
+  // coeurofbear+123@gmail.com
+  // coeurofbear+000@gmail.com
   methods: {
+    goToIndex() {
+      this.$router.push('/')
+    },
     signup() {
-      firebase
-        .auth()
+      const auth = firebase.auth()
+      auth
         .createUserWithEmailAndPassword(this.user.email, this.user.password)
         .then(
           userCredential => {
-            alert('your account has been created' + userCredential.user)
-            var currentUser = firebase.auth().currentUser
+            this.response = userCredential
+            const currentUser = auth.currentUser
             currentUser
               .updateProfile({
                 displayName: this.user.name
               })
-              .then(
-                e => {
-                  alert('updated profile' + e)
-                  this.update = e
-                },
-                e => {
-                  console.log(e)
-                }
-              )
+              .then(e => {
+                this.updatedUser = e
+                console.log('your account has been created: ' + currentUser)
+              })
           },
           err => {
             console.error(err)
+            this.update = err
           }
         )
     }

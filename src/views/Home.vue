@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <!-- <div v-if="true" class="row"> -->
-    <div v-if="!user.uid" class="row">
+    <div v-if="!user" class="row">
       <div
         class="col-12 col-sm-10 offset-sm-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4"
       >
@@ -9,21 +9,11 @@
         <p class="small-text">
           In order to use Germantionary, you'll need to log in or create an
           account
+          <router-link class="link" to="/login">here</router-link>.
         </p>
-        <br />
-        <router-link class="link" to="/login">Here</router-link>
-        <br />
-        <!-- <h2>User: {{ userObject }}</h2> -->
-        <br />
-        <br />
       </div>
     </div>
     <div v-else class="row">
-      <!-- <h2>User: {{ user }}</h2>
-      <br />
-      <br />
-      <br /> -->
-
       <div class="col-12">
         <AddWordsSection />
       </div>
@@ -56,10 +46,7 @@ export default {
   mixins: [userMethods],
   data() {
     return {
-      user: {
-        uid: ''
-      },
-      userObject: {},
+      user: null,
       wordId: ''
     }
   },
@@ -75,7 +62,6 @@ export default {
     }
   },
   mounted() {
-    this.__getCurrentUserObject()
     this.__getCurrentSignedInUser()
   }
 }
