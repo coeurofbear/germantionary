@@ -20,7 +20,7 @@
       <div class="col-12 col-xl-6">
         <LatestAddedSection />
       </div>
-      <div class="col-12 col-lg-5 offset-lg-1">
+      <div class="col-12 col-xl-5 offset-xl-1">
         <ItemDetailDisplay v-if="itemSelected" :wordId="wordId" />
         <!-- <h1>Welcome to Germantionary</h1> -->
       </div>

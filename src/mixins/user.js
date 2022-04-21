@@ -7,11 +7,9 @@ export default {
         this.user = user
       })
     },
-    __getCurrentUserObject() {
-      firebase.auth().onAuthStateChanged(user => {
-        this.userObject = user
-      })
-    },
+    // __getCurrentUserObject() {
+    //   return firebase.auth().currentUser
+    // },
     __logout() {
       firebase
         .auth()

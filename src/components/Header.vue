@@ -3,9 +3,20 @@
     <div class="container ">
       <div class="links">
         <router-link to="/"><h1>Germantionary</h1></router-link>
-        <div v-if="userObject">
-          <span class="white">Hi, {{ userObject.displayName }}, </span>
+        <div v-if="user">
+          <span v-if="user.displayName" class="white"
+            >Hi, {{ user.displayName }},
+          </span>
+          <span v-else>Hi user lols, </span>
           <span @click="__logout" class="link white">Logout</span>
+        </div>
+        <div v-else class="links">
+          <span class="white"
+            >New?
+            <router-link class="link white" to="/signup">
+              Signup here</router-link
+            ></span
+          >
         </div>
       </div>
     </div>
@@ -20,11 +31,12 @@ export default {
   mixins: [userMethods],
   data() {
     return {
-      userObject: null
+      user: null
     }
   },
+
   mounted() {
-    this.__getCurrentUserObject()
+    this.__getCurrentSignedInUser()
   }
 }
 </script>

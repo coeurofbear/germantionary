@@ -8,16 +8,18 @@
           <h3>Sign up</h3>
           <form @submit.prevent="signup">
             <input
+              autocomplete="name"
               class="input"
               v-model="user.name"
               type="text"
               placeholder="Name"
             />
             <input
+              autocomplete="email"
               class="input"
               v-model="user.email"
               type="email"
-              placeholder="Email"
+              placeholder="E-mail"
             />
             <input
               class="input"
@@ -25,14 +27,12 @@
               type="password"
               placeholder="Password"
             />
+            <div class="input" v-if="error">{{ error }}</div>
             <input class="btn" type="submit" placeholder="Sign up" />
             <p class="small-text">
               Have already an account?
               <router-link class="link" to="/login">Login</router-link>
             </p>
-            <div>update: {{ update }}</div>
-            <div>response: {{ response }}</div>
-            <div>updatedUser: {{ updatedUser }}</div>
           </form>
         </div>
       </div>
@@ -52,37 +52,30 @@ export default {
         password: ''
       },
       response: null,
-      update: null,
-      updatedUser: null
+      error: null
     }
   },
-  // coeurofbear+5@gmail.com
-  // coeurofbear+123@gmail.com
-  // coeurofbear+000@gmail.com
   methods: {
     goToIndex() {
       this.$router.push('/')
     },
-    signup() {
+    async signup() {
       const auth = firebase.auth()
       auth
         .createUserWithEmailAndPassword(this.user.email, this.user.password)
         .then(
           userCredential => {
+            this.error = null
             this.response = userCredential
             const currentUser = auth.currentUser
-            currentUser
-              .updateProfile({
-                displayName: this.user.name
-              })
-              .then(e => {
-                this.updatedUser = e
-                console.log('your account has been created: ' + currentUser)
-              })
+            currentUser.updateProfile({
+              displayName: this.user.name
+            })
+            this.goToIndex()
           },
           err => {
             console.error(err)
-            this.update = err
+            this.error = err
           }
         )
     }
