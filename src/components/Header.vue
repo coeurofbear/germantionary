@@ -2,12 +2,9 @@
   <header class="header">
     <div class="container ">
       <div class="links">
-        <router-link to="/"><h1>Germantionary</h1></router-link>
+        <router-link to="/"><h1 class="white">Germantionary</h1></router-link>
         <div v-if="user">
-          <span v-if="user.displayName" class="white"
-            >Hi, {{ user.displayName }},
-          </span>
-          <span v-else>Hi user lols, </span>
+          <span class="white">Hi, {{ userName }}, </span>
           <span @click="__logout" class="link white">Logout</span>
         </div>
         <div v-else class="links">
@@ -29,14 +26,16 @@ import userMethods from '@/mixins/user.js'
 export default {
   name: 'Header',
   mixins: [userMethods],
-  data() {
-    return {
-      user: null
+  props: {
+    user: {
+      type: Object,
+      default: () => {}
     }
   },
-
-  mounted() {
-    this.__getCurrentSignedInUser()
+  computed: {
+    userName() {
+      return this.user.displayName
+    }
   }
 }
 </script>
@@ -47,9 +46,6 @@ export default {
 .header {
   background: $black;
   padding: 45px 0;
-}
-h1 {
-  color: white;
 }
 .links {
   display: flex;
