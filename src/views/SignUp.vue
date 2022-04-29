@@ -51,27 +51,22 @@ export default {
         email: '',
         password: ''
       },
-      response: null,
       error: null
     }
   },
   methods: {
-    goToIndex() {
-      this.$router.push('/')
-    },
     async signup() {
       const auth = firebase.auth()
       auth
         .createUserWithEmailAndPassword(this.user.email, this.user.password)
         .then(
-          userCredential => {
+          () => {
             this.error = null
-            this.response = userCredential
-            const currentUser = auth.currentUser
-            currentUser.updateProfile({
+            auth.currentUser.updateProfile({
               displayName: this.user.name
             })
-            this.goToIndex()
+            this.$store.commit('setDisplayName', this.user.name)
+            this.$router.push('/')
           },
           err => {
             console.error(err)

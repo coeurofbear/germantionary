@@ -20,6 +20,9 @@ export default new Vuex.Store({
     },
     setUser(state, obj) {
       state.user = obj
+    },
+    setDisplayName(state, name) {
+      state.displayName = name
     }
   },
   actions: {

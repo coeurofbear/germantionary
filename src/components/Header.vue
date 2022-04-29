@@ -4,8 +4,10 @@
       <div class="links">
         <router-link to="/"><h1 class="white">Germantionary</h1></router-link>
         <div v-if="user">
-          <span class="white">Hi, {{ userName }}, </span>
-          <span @click="__logout" class="link white">Logout</span>
+          <span class="white"
+            >Hi, {{ displayName ? displayName : user.displayName }},
+          </span>
+          <span @click="logout" class="link white">Logout</span>
         </div>
         <div v-else class="links">
           <span class="white"
@@ -22,19 +24,36 @@
 
 <script>
 import userMethods from '@/mixins/user.js'
+import firebase from 'firebase'
 
 export default {
   name: 'Header',
   mixins: [userMethods],
-  props: {
-    user: {
-      type: Object,
-      default: () => {}
+  computed: {
+    user() {
+      return this.$store.state.user
+    },
+    displayName() {
+      return this.$store.state.displayName
     }
   },
-  computed: {
-    userName() {
-      return this.user.displayName
+  watch: {
+    'user.displayName'(current) {
+      if (current) {
+        this.$store.commit('setDisplayName', '')
+      }
+    }
+  },
+  methods: {
+    logout() {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          if (this.$route.path !== '/') {
+            this.$router.push('/')
+          }
+        })
     }
   }
 }
