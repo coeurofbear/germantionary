@@ -58,7 +58,7 @@ export default {
         .then(
           userCredential => {
             this.response = userCredential
-            alert('You are logged in, ' + this.response.user.displayName)
+            // alert('You are logged in, ' + this.response.user.displayName)
             this.goToIndex()
           },
           err => {

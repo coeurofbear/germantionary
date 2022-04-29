@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header :user="user" />
+    <Header />
     <SearchSection v-if="user" />
     <div class="section" v-else>
       <div class="container">

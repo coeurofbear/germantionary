@@ -15,7 +15,7 @@ export default {
         .auth()
         .signOut()
         .then(() => {
-          alert(`you've been signed out besitooo`)
+          // alert(`you've been signed out besitooo`)
           if (this.$route.path !== '/') {
             this.$router.push('/')
           }
