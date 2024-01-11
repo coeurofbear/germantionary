@@ -22,7 +22,6 @@ firebase.initializeApp(firebaseConfig)
 export const db = firebase.firestore()
 export const collection = db.collection('words')
 
-console.log('process.env.VUE_APP_API_KEY', process.env.VUE_APP_API_KEY)
 new Vue({
   router,
   store,
