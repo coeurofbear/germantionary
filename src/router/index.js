@@ -6,6 +6,7 @@ import AllWords from '@/views/AllWords.vue'
 import Login from '@/views/Login.vue'
 import SignUp from '@/views/SignUp.vue'
 import EmptyRouterView from '@/components/EmptyRouterView.vue'
+import Error from '@/views/Error.vue'
 
 Vue.use(VueRouter)
 
@@ -15,16 +16,6 @@ const routes = [
     name: 'Home',
     component: Home
   },
-  // {
-  //   path: '/words/:id',
-  //   name: 'ItemDetail',
-  //   component: ItemDetail
-  // },
-  // {
-  //   path: '/words',
-  //   name: 'All Words',
-  //   component: AllWords
-  // },
   {
     path: '/words',
     component: EmptyRouterView,
@@ -59,6 +50,11 @@ const routes = [
     path: '/signup',
     name: 'SignUp',
     component: SignUp
+  },
+  {
+    path: '/*',
+    name: 'SignUp',
+    component: Error
   }
 ]
 

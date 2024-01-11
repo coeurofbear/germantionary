@@ -1,5 +1,5 @@
 <template>
-  <ul class="list">
+  <ul class="list" v-if="words.length">
     <Item
       v-for="(word, index) in words.slice(0, itemsToShow)"
       :word="word"
