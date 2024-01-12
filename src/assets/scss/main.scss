@@ -1,8 +1,10 @@
 @import 'meyer-reset-sass/reset';
 @import './variables';
 @import './family-fonts';
-@import './grid.scss';
 @import './texts';
 @import './miscellaneous';
 @import './forms';
 @import './generic';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

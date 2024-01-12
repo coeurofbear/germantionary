@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <div class="container ">
+    <div class="container">
       <div class="links">
         <router-link to="/"><h1 class="white">Germantionary</h1></router-link>
         <div v-if="user">
