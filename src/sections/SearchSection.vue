@@ -1,5 +1,5 @@
 <template>
-  <div class="search-section">
+  <div class="search-section" v-if="user">
     <div class="container">
       <h3 class="h3">Search</h3>
       <SearchBar @send-input="searchedWord = $event" />
@@ -30,7 +30,12 @@ export default {
       },
       deep: true
     }
-  }
+  },
+  computed: {
+    user() {
+      return this.$store.state.user
+    }
+  },
 }
 </script>
 

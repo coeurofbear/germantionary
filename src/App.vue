@@ -1,49 +1,21 @@
 <template>
-  <div id="app">
-    <Header />
-    <SearchSection v-if="user" />
-    <div class="section" v-else>
-      <div class="container">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit enim
-          dicta voluptates aperiam ut earum impedit laborum laudantium, hic
-          corrupti recusandae eaque numquam nulla, eos exercitationem error esse
-          beatae voluptate.
-        </p>
-        <br /><br />
-        <!-- <Counter /> -->
-      </div>
-    </div>
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div> -->
-    <router-view />
-    <footer></footer>
+  <div id="app">  
+    <Layout>
+      <router-view />
+    </Layout>
   </div>
 </template>
 
-<script>
-import Header from '@/components/Header.vue'
-import SearchSection from '@/sections/SearchSection.vue'
-// import Counter from '@/components/Counter.vue'
+<script setup>
+import Layout from '@/layout/default.vue'
+import { onMounted } from 'vue'
+import { useStore } from 'vuex'
 
-export default {
-  name: 'App',
-  components: {
-    Header,
-    SearchSection
-    // Counter
-  },
-  computed: {
-    user() {
-      return this.$store.state.user
-    }
-  },
-  mounted() {
-    this.$store.dispatch('getUserAsync')
-  }
-}
+const store = useStore()
+
+onMounted(()=> {
+  store.dispatch('getUserAsync')
+})
 </script>
 
 <style lang="scss">
