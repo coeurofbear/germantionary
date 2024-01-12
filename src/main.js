@@ -22,7 +22,19 @@ const firebaseApp = firebase.initializeApp(firebaseConfig)
 export const db = firebaseApp.firestore()
 export const collection = db.collection('words')
 
-createApp(App)
+const app = createApp(App)
+
+// Global error handler
+app.config.errorHandler = (err, instance, info) => {
+  // Handle the error globally
+  console.log('Global error:', err)
+  console.log('Vue instance:', instance)
+  console.log('Error info:', info)
+
+  // Add code for UI notifications, reporting or other error handling logic
+}
+
+app
   .use(router)
   .use(store)
   .mount('#app')

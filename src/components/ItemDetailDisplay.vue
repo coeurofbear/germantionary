@@ -1,5 +1,5 @@
 <template>
-  <div v-if="true" class="wrapper" :class="{ 'with-background': bg }">
+  <div class="wrapper" :class="{ 'with-background': bg }">
     <!-- <div class="circle-icon yellow">
       <img src="@/assets/img/edit.svg" alt="" />
     </div>
@@ -81,8 +81,8 @@ export default {
   },
   async mounted() {
     this.word = await this.getItem()
-    this.meaning = await this.word.meaning
-    this.seconds = await this.word.date.seconds
+    this.meaning = this.word && this.word.meaning
+    this.seconds = this.word && this.word.date.seconds
   },
   methods: {
     getItem() {
