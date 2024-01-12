@@ -21,7 +21,7 @@ export default {
   },
   watch: {
     searchValue(word) {
-      this.$emit('input', word)
+      this.$emit('send-input', word)
     }
   }
 }

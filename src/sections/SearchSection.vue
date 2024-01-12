@@ -2,14 +2,13 @@
   <div class="search-section">
     <div class="container">
       <h3 class="h3">Search</h3>
-      <SearchBar v-model="searchedWord" />
+      <SearchBar @send-input="searchedWord = $event" />
       <SearchResults :searchedWord="searchedWord" />
     </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
 import SearchBar from '@/components/SearchBar.vue'
 import SearchResults from '@/components/SearchResults.vue'
 
@@ -25,8 +24,11 @@ export default {
     }
   },
   watch: {
-    '$route.path'() {
-      this.searchedWord = ''
+    '$route.path': {
+      handler() {
+        this.searchedWord = ''
+      },
+      deep: true
     }
   }
 }

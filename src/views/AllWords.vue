@@ -12,7 +12,6 @@
 <script>
 import AllAddedWords from '@/components/AllAddedWords.vue'
 import GoBackButton from '@/components/GoBackButton.vue'
-// @ is an alias to /src
 
 export default {
   name: 'Detail',

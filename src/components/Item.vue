@@ -13,7 +13,7 @@
       <Date
         v-if="date"
         :wordDate="word.date.seconds"
-        @click.native="goToDetail(word.wordId)"
+        @click="goToDetail(word.wordId)"
         >Added in:
       </Date>
     </div>

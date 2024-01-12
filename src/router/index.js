@@ -1,5 +1,4 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import Home from '@/views/Home.vue'
 import ItemDetail from '@/views/ItemDetail.vue'
 import AllWords from '@/views/AllWords.vue'
@@ -7,8 +6,6 @@ import Login from '@/views/Login.vue'
 import SignUp from '@/views/SignUp.vue'
 import EmptyRouterView from '@/components/EmptyRouterView.vue'
 import Error from '@/views/Error.vue'
-
-Vue.use(VueRouter)
 
 const routes = [
   {
@@ -53,14 +50,13 @@ const routes = [
   },
   {
     path: '/*',
-    name: 'SignUp',
+    name: 'Error',
     component: Error
   }
 ]
 
-const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
+const router = createRouter({
+  history: createWebHistory(),
   routes
 })
 

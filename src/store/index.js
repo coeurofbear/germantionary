@@ -1,14 +1,7 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import { createStore } from 'vuex'
 import firebase from 'firebase/compat/app'
 
-Vue.use(Vuex)
-
-// export const numberDisplay = Vue.observable({
-//   count: 0
-// })
-
-export default new Vuex.Store({
+export default createStore({
   state: {
     wordId: null,
     user: {},

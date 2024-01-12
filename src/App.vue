@@ -24,7 +24,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import Header from '@/components/Header.vue'
 import SearchSection from '@/sections/SearchSection.vue'
 // import Counter from '@/components/Counter.vue'

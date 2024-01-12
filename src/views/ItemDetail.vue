@@ -32,7 +32,6 @@ import ItemDetailDisplay from '@/components/ItemDetailDisplay.vue'
 import GoBackButton from '@/components/GoBackButton.vue'
 import { collection } from '@/main.js'
 // import words from '@/words/words.js'
-// @ is an alias to /src
 
 export default {
   name: 'Detail',

@@ -30,7 +30,7 @@ export default {
   data() {
     return {
       words: [],
-      filteredWords: null
+      filteredWords: []
     }
   },
   props: {
