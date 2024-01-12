@@ -1,5 +1,7 @@
 import Vue from 'vue'
-import firebase from 'firebase'
+import firebase from 'firebase/compat/app'
+import 'firebase/compat/auth'
+import 'firebase/compat/firestore'
 import App from './App.vue'
 import router from './router'
 import store from './store'
@@ -17,9 +19,9 @@ const firebaseConfig = {
   measurementId: process.env.VUE_APP_MEASUREMENT_ID
 }
 
-firebase.initializeApp(firebaseConfig)
-
-export const db = firebase.firestore()
+// Use this to initialize the firebase App
+const firebaseApp = firebase.initializeApp(firebaseConfig)
+export const db = firebaseApp.firestore()
 export const collection = db.collection('words')
 
 new Vue({

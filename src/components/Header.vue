@@ -24,7 +24,7 @@
 
 <script>
 import userMethods from '@/mixins/user.js'
-import firebase from 'firebase'
+import firebase from 'firebase/compat/app'
 
 export default {
   name: 'Header',
