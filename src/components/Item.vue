@@ -134,7 +134,7 @@ li {
     background: #d7eee3 !important;
   }
 }
-::v-deep .date {
+:deep(.date) {
   margin-left: 30px;
   cursor: pointer;
 }
