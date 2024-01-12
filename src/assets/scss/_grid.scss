@@ -36,8 +36,8 @@ $container-max-widths: (
 // We need to import all of these instead of just the main grid file since the
 // main grid file is importing a lot of helper classes
 
-@import "~bootstrap-4-grid/scss/grid/functions";
-@import "~bootstrap-4-grid/scss/grid/mixins/breakpoints";
-@import "~bootstrap-4-grid/scss/grid/mixins/grid-framework";
-@import "~bootstrap-4-grid/scss/grid/mixins/grid";
-@import "~bootstrap-4-grid/scss/grid/grid";
+@import "bootstrap-4-grid/scss/grid/functions";
+@import "bootstrap-4-grid/scss/grid/mixins/breakpoints";
+@import "bootstrap-4-grid/scss/grid/mixins/grid-framework";
+@import "bootstrap-4-grid/scss/grid/mixins/grid";
+@import "bootstrap-4-grid/scss/grid/grid";
