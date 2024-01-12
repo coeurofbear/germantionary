@@ -9,7 +9,7 @@
     "deploy": "sh deploy.sh"
   },
   "dependencies": {
-    "lodash": "^4.17.21",
+    "lodash": "^4.0.0",
     "vue": "^3.1.0",
     "vue-router": "^4.2.5",
     "vuefire": "^2.2.5",
