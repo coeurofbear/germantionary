@@ -1,14 +1,14 @@
 <template>
   <div id="app">
-    <component :is="user ? Layout : NoAuth" :user="user">
+    <component :is="user ? Default : Simple" :user="user">
       <router-view />
     </component>
   </div>
 </template>
 
 <script setup>
-import Layout from '@/layout/default.vue'
-import NoAuth from '@/layout/no-auth.vue'
+import Default from '@/layout/default.vue'
+import Simple from '@/layout/simple.vue'
 import getUser from '@/composables/getUser'
 import { onMounted } from 'vue'
 import { useStore } from 'vuex'
