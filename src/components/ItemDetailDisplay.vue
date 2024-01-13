@@ -39,7 +39,7 @@
 import ItemTag from '@/components/item-elements/ItemTag.vue'
 import ItemDate from '@/components/item-elements/ItemDate.vue'
 import helper from '@/mixins/helpers.js'
-import { collection } from '@/main.js'
+import { db } from '@/firebase/config.js'
 // import words from '@/words/words.js'
 // import _ from 'lodash'
 
@@ -86,7 +86,7 @@ export default {
   },
   methods: {
     getItem() {
-      return collection
+      return db.collection($store.state.user.uid)
         .doc(this.wordIdPath)
         .get()
         .then(data => data.data())

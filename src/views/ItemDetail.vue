@@ -30,7 +30,7 @@
 <script>
 import ItemDetailDisplay from '@/components/ItemDetailDisplay.vue'
 import GoBackButton from '@/components/GoBackButton.vue'
-import { collection } from '@/main.js'
+import { db } from '@/firebase/config.js'
 // import words from '@/words/words.js'
 
 export default {
@@ -47,7 +47,7 @@ export default {
   },
   methods: {
     getData() {
-      collection.orderBy('date', 'desc').onSnapshot(querySnapshot => {
+      db.collection($store.state.user.uid).orderBy('date', 'desc').onSnapshot(querySnapshot => {
         this.wordsIdArray = querySnapshot.docs.map(doc => {
           return doc.id
         })

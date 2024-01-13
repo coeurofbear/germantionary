@@ -35,7 +35,7 @@
 <script>
 import Tag from '@/components/item-elements/ItemTag.vue'
 import Date from '@/components/item-elements/ItemDate.vue'
-import { collection } from '@/main.js'
+import { db } from '@/firebase/config.js'
 
 export default {
   name: 'Item',
@@ -68,7 +68,7 @@ export default {
   },
   methods: {
     async deleteItem(id) {
-      const itemToDelete = collection.doc(id)
+      const itemToDelete = await db.collection($store.state.user.uid).doc(id)
       const itemObject = await itemToDelete.get().then(item => item.data())
       const deleteItem = confirm(
         `Please confirm that you want to delete '${itemObject.word}'`
