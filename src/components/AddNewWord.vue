@@ -56,7 +56,7 @@
 </template>
 
 <script>
-import { collection } from '@/main.js'
+import { db } from '@/firebase/config.js'
 import helper from '@/mixins/helpers.js'
 
 export default {
@@ -83,7 +83,8 @@ export default {
         this.errors.push('Please fill all the fields.')
         return
       }
-      collection.add({
+
+      db.collection(this.$store.state.user.uid).add({
         word: this.word.word,
         meaning: this.word.meaning,
         type: this.word.type,

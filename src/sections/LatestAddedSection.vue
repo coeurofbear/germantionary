@@ -1,46 +1,22 @@
 <template>
   <div>
-    <h3 class="h3">Latest added words: {{ words.length }}</h3>
+    <h3 class="h3">Latest added words: {{ words && words.length }}</h3>
     <br />
-    <AllAddedWords :itemsToShow="10" />
-    <div class="button" v-if="words.length > 10">
+    <AllAddedWords :words="words" :itemsToShow="10" />
+    <div class="button" v-if="words && words.length > 10">
       <router-link class="link" to="/words">See all</router-link>
     </div>
   </div>
 </template>
 
-<script>
+<script setup>
 import AllAddedWords from '@/components/AllAddedWords.vue'
-import { collection } from '@/main.js'
+import getWords from '@/composables/getWords';
+import { useStore } from 'vuex';
 
-export default {
-  name: 'LatestAddedSection',
+const store = useStore()
+const { words } = getWords(store)
 
-  components: {
-    AllAddedWords
-  },
-
-  data() {
-    return {
-      words: []
-    }
-  },
-  methods: {
-    getData() {
-      collection.orderBy('date', 'desc').onSnapshot(querySnapshot => {
-        this.words = querySnapshot.docs.map(doc => {
-          return {
-            ...doc.data(),
-            wordId: doc.id
-          }
-        })
-      })
-    }
-  },
-  mounted() {
-    this.getData()
-  }
-}
 </script>
 
 <style scoped lang="scss">

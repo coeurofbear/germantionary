@@ -1,5 +1,5 @@
 <template>
-  <ul class="list" v-if="words.length">
+  <ul class="list" v-if="words">
     <Item
       v-for="(word, index) in words.slice(0, itemsToShow)"
       :word="word"
@@ -9,50 +9,23 @@
   </ul>
 </template>
 
-<script>
+<script setup>
 import Item from '@/components/Item.vue'
-import { collection } from '@/main.js'
-// import words from '@/words/words.js'
+import { defineProps } from 'vue'
 
-export default {
-  name: 'LatestAddedSection',
-
-  props: {
+const props = defineProps(
+  { 
+    words: Object,
     itemsToShow: {
       type: Number,
-      default: 999999
+      default: 9999
     },
     date: {
       type: Boolean,
       default: false
     }
   },
-  components: {
-    Item
-  },
-
-  data() {
-    return {
-      words: []
-    }
-  },
-  methods: {
-    getData() {
-      collection.orderBy('date', 'desc').onSnapshot(querySnapshot => {
-        this.words = querySnapshot.docs.map(doc => {
-          return {
-            ...doc.data(),
-            wordId: doc.id
-          }
-        })
-      })
-    }
-  },
-  mounted() {
-    this.getData()
-    // this.words = words
-  }
-}
+)
 </script>
 
 <style scoped lang="scss">

@@ -20,7 +20,7 @@
 
 <script>
 import Item from '@/components/Item.vue'
-import { collection } from '@/main.js'
+import { db } from '@/firebase/config.js'
 
 export default {
   name: 'SearchResults',
@@ -52,7 +52,7 @@ export default {
   },
   methods: {
     getData() {
-      collection.onSnapshot(colection => {
+      db.collection(this.$store.state.user.uid).onSnapshot(colection => {
         this.words = colection.docs.map(doc => {
           return {
             ...doc.data(),
@@ -65,8 +65,8 @@ export default {
       this.filteredWords = this.words.filter(word => {
         if (searchedWord.length > 0) {
           return (
-            word.word.toUpperCase().includes(searchedWord.toUpperCase()) ||
-            word.meaning.toUpperCase().includes(searchedWord.toUpperCase())
+            word.word && word.word.toUpperCase().includes(searchedWord.toUpperCase()) ||
+            word.meaning && word.meaning.toUpperCase().includes(searchedWord.toUpperCase())
           )
         }
       })

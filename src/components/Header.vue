@@ -26,7 +26,7 @@
 import getUser from '@/composables/getUser.js'
 import userLogout from '@/composables/userLogout.js'
 
-const user = getUser().user
+const { user } = getUser()
 const { logout } = userLogout()
 
 const handleClick = async () => {

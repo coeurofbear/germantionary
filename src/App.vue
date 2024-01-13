@@ -10,8 +10,15 @@
 import Layout from '@/layout/default.vue'
 import NoAuth from '@/layout/no-auth.vue'
 import getUser from '@/composables/getUser'
+import { onMounted } from 'vue'
+import { useStore } from 'vuex'
 
 const { user } = getUser()
+const store = useStore()
+
+onMounted(()=>{
+  store.commit('setUser', user)
+})
 </script>
 
 <style lang="scss">

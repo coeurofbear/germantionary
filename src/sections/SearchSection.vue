@@ -1,5 +1,5 @@
 <template>
-  <div class="search-section" v-if="user">
+  <div class="search-section">
     <div class="container">
       <h3 class="h3">Search</h3>
       <SearchBar @send-input="searchedWord = $event" />
@@ -24,16 +24,9 @@ export default {
     }
   },
   watch: {
-    '$route.path': {
-      handler() {
-        this.searchedWord = ''
-      },
-      deep: true
-    }
-  },
-  computed: {
-    user() {
-      return this.$store.state.user
+    '$route.path'() {
+      this.searchedWord = ''
+
     }
   },
 }

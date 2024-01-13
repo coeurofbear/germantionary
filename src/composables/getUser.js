@@ -4,12 +4,11 @@ import { auth } from '@/firebase/config.js'
 const user = ref(auth.currentUser)
 
 auth.onAuthStateChanged(_user => {
-  console.log('current user is', _user)
   user.value = _user
 })
 
 const getUser = () => {
-  return {user}
+  return { user }
 }
 
 export default getUser
