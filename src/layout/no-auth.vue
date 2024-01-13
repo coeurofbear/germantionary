@@ -1,7 +1,6 @@
 <template>
   <main>
-    <Header/>
-    <SearchSection />
+    <Header />
     <slot />
     <footer />
   </main>
@@ -9,5 +8,4 @@
 
 <script setup>
 import Header from '@/components/Header.vue'
-import SearchSection from '@/sections/SearchSection.vue'
 </script>
