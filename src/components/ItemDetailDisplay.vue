@@ -86,7 +86,7 @@ export default {
   },
   methods: {
     getItem() {
-      return db.collection($store.state.user.uid)
+      return db.collection(this.$store.state.user.uid)
         .doc(this.wordIdPath)
         .get()
         .then(data => data.data())

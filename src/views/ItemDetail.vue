@@ -47,7 +47,7 @@ export default {
   },
   methods: {
     getData() {
-      db.collection($store.state.user.uid).orderBy('date', 'desc').onSnapshot(querySnapshot => {
+      db.collection(this.$store.state.user.uid).orderBy('date', 'desc').onSnapshot(querySnapshot => {
         this.wordsIdArray = querySnapshot.docs.map(doc => {
           return doc.id
         })

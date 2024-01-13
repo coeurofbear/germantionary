@@ -68,7 +68,7 @@ export default {
   },
   methods: {
     async deleteItem(id) {
-      const itemToDelete = await db.collection($store.state.user.uid).doc(id)
+      const itemToDelete = await db.collection(this.$store.state.user.uid).doc(id)
       const itemObject = await itemToDelete.get().then(item => item.data())
       const deleteItem = confirm(
         `Please confirm that you want to delete '${itemObject.word}'`
