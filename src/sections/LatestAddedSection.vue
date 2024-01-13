@@ -15,8 +15,9 @@ import getWords from '@/composables/getWords';
 import { useStore } from 'vuex';
 
 const store = useStore()
-const { words } = getWords(store)
+const { words, load } = getWords()
 
+load(store)
 </script>
 
 <style scoped lang="scss">

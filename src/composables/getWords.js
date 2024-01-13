@@ -1,19 +1,25 @@
 import { ref } from 'vue'
 import { db } from '@/firebase/config'
 
-const words = ref(null)
+const words = ref([])
+const error = ref(null)
 
-const getWords = (store) => {
-  db.collection(store.state.user.uid).orderBy('date', 'desc').onSnapshot(querySnapshot => {
-    words.value = querySnapshot.docs.map(doc => {
-      return {
-        ...doc.data(),
-        wordId: doc.id
-      }
+const load = async (store) => {
+  try {
+    const res = await db.collection(store.state.user.uid).orderBy('date', 'desc')
+
+    res.onSnapshot(querySnapshot => {
+      words.value = querySnapshot.docs.map(doc => {
+        return { ...doc.data(), wordId: doc.id }
+      })
     })
-  })
-
-  return { words } 
+  }
+  catch (err) {
+    error.value = err.message
+  }
 }
 
+const getWords = () => {
+  return { words, error, load }
+}
 export default getWords
