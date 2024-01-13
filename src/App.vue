@@ -1,21 +1,17 @@
 <template>
-  <div id="app">  
-    <Layout>
+  <div id="app">
+    <component :is="user ? Layout : NoAuth" :user="user">
       <router-view />
-    </Layout>
+    </component>
   </div>
 </template>
 
 <script setup>
 import Layout from '@/layout/default.vue'
-import { onMounted } from 'vue'
-import { useStore } from 'vuex'
+import NoAuth from '@/layout/no-auth.vue'
+import getUser from '@/composables/getUser'
 
-const store = useStore()
-
-onMounted(()=> {
-  store.dispatch('getUserAsync')
-})
+const { user } = getUser()
 </script>
 
 <style lang="scss">

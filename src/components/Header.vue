@@ -5,9 +5,9 @@
         <router-link to="/"><h1 class="white">Germantionary</h1></router-link>
         <div v-if="user">
           <span class="white"
-            >Hi, {{ displayName ? displayName : user.displayName }},
+            >Hi, {{ user.displayName }},<br>
           </span>
-          <span @click="logout" class="link white">Logout</span>
+          <span @click="handleClick" class="link white">Logout</span>
         </div>
         <div v-else class="links">
           <span class="white"
@@ -22,40 +22,15 @@
   </header>
 </template>
 
-<script>
-import userMethods from '@/mixins/user.js'
-import firebase from 'firebase/compat/app'
+<script setup>
+import getUser from '@/composables/getUser.js'
+import userLogout from '@/composables/userLogout.js'
 
-export default {
-  name: 'Header',
-  mixins: [userMethods],
-  computed: {
-    user() {
-      return this.$store.state.user
-    },
-    displayName() {
-      return this.$store.state.displayName
-    }
-  },
-  watch: {
-    'user.displayName'(current) {
-      if (current) {
-        this.$store.commit('setDisplayName', '')
-      }
-    }
-  },
-  methods: {
-    logout() {
-      firebase
-        .auth()
-        .signOut()
-        .then(() => {
-          if (this.$route.path !== '/') {
-            this.$router.push('/')
-          }
-        })
-    }
-  }
+const user = getUser().user
+const { logout } = userLogout()
+
+const handleClick = async () => {
+  await logout()
 }
 </script>
 
