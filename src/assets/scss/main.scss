@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import 'meyer-reset-sass/reset';
 @import './variables';
 @import './family-fonts';
@@ -5,6 +8,3 @@
 @import './miscellaneous';
 @import './forms';
 @import './generic';
-@tailwind base;
-@tailwind components;
-@tailwind utilities;

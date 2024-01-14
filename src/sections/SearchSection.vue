@@ -1,7 +1,6 @@
 <template>
   <div class="search-section">
     <div class="container">
-      <h3 class="h3">Search</h3>
       <SearchBar @send-input="searchedWord = $event" />
       <SearchResults :searchedWord="searchedWord" />
     </div>

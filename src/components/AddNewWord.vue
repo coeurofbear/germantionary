@@ -1,23 +1,23 @@
 <template>
   <div>
-    <form @submit.prevent="addNewWord()" id="formVue" class="add-word-wrapper">
+    <form @submit.prevent="addNewWord()" id="formVue" class="flex items-center">
       <input
         v-model="word.word"
         required
         type="text"
-        class="word-input margin-bottom-form"
+        class="mr-3 word-input margin-bottom-form"
         placeholder="Add a word"
       />
       <input
         v-model="word.meaning"
         required
         type="text"
-        class="word-input margin-bottom-form"
+        class="mr-3 word-input margin-bottom-form"
         placeholder="Meaning"
       />
       <select
         v-model="word.type"
-        class="margin-bottom-form"
+        class="mr-3 margin-bottom-form"
         required
         name="type"
         id="type"
@@ -33,7 +33,7 @@
       </select>
       <select
         v-model="word.gender"
-        class="margin-bottom-form"
+        class="mr-3 margin-bottom-form"
         name="gender"
         id="gender"
       >
@@ -42,7 +42,7 @@
           {{ __capitalizeFirstLetter(gender) }}
         </option>
       </select>
-      <button class="circle-icon green margin-bottom-form">
+      <button class="circle-icon green margin-bottom-form flex-none">
         <img src="@/assets/img/plus.svg" alt="" />
       </button>
     </form>
@@ -92,8 +92,11 @@ export default {
         date: new Date()
       })
       this.success = `'${this.word.word}' has been added to the list.`
-      this.word.word = this.word.meaning = this.word.type = this.word.gender =
-        ''
+      this.word.word =
+        this.word.meaning =
+        this.word.type =
+        this.word.gender =
+          ''
       setTimeout(() => {
         this.success = null
       }, 4000)
@@ -102,27 +105,3 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
-@import './src/assets/scss/main';
-
-.add-word-wrapper {
-  display: flex;
-  align-items: flex-end;
-  width: 100%;
-
-  input,
-  select {
-    margin-right: 15px;
-  }
-
-  .circle-icon {
-    align-self: center;
-  }
-}
-.margin-bottom-form {
-  margin-bottom: 15px;
-}
-.success {
-  margin-top: 10px;
-}
-</style>

@@ -2,17 +2,23 @@
   <header class="header">
     <div class="container">
       <div class="links">
-        <router-link to="/"><h1 class="white">Germantionary</h1></router-link>
-        <div v-if="user">
-          <span class="white"
-            >Hi, {{ user.displayName }},<br>
-          </span>
-          <span @click="handleClick" class="link white">Logout</span>
+        <router-link to="/"
+          ><span class="text-[#fff] text-4xl font-bold"
+            >Germantionary</span
+          ></router-link
+        >
+        <div class="flex" v-if="user">
+          <span class="text-[#fff]"
+            >Hi, {{ user.displayName }},
+            <span @click="handleClick" class="link text-[#fff]"
+              >Logout</span
+            ></span
+          >
         </div>
         <div v-else class="links">
-          <span class="white"
+          <span class="text-[#fff]"
             >New?
-            <router-link class="link white" to="/signup">
+            <router-link class="link text-[#fff]" to="/signup">
               Signup here</router-link
             ></span
           >
@@ -23,10 +29,15 @@
 </template>
 
 <script setup>
-import getUser from '@/composables/getUser.js'
 import userLogout from '@/composables/userLogout.js'
+import { computed } from 'vue'
+import { useStore } from 'vuex'
 
-const { user } = getUser()
+const store = useStore()
+
+const user = computed(() => {
+  return store.state.user
+})
 const { logout } = userLogout()
 
 const handleClick = async () => {
@@ -44,8 +55,5 @@ const handleClick = async () => {
 .links {
   display: flex;
   justify-content: space-between;
-}
-.white {
-  color: white;
 }
 </style>
